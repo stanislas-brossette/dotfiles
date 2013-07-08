@@ -1,0 +1,9 @@
+[submodule "gdbinit"]
+	path = gdbinit
+	url = git://github.com/thomas-moulard/Gdbinit.git
+[submodule "oh-my-zsh"]
+	path = oh-my-zsh
+	url = git://github.com/thomas-moulard/oh-my-zsh.git
+[submodule "gitignore"]
+	path = gitignore
+	url = git://github.com/thomas-moulard/gitignore.git

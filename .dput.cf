@@ -1,0 +1,15 @@
+[mentors]
+fqdn = mentors.debian.net
+incoming = /upload
+method = http
+allow_unsigned_uploads = 0
+progress_indicator = 2
+# Allow uploads for UNRELEASED packages
+allowed_distributions = .*
+
+[local]
+method = local
+incoming = /var/cache/archive/mini-dinstall/incoming
+allow_non-us_software = 1
+run_dinstall = 0
+post_upload_command = mini-dinstall --batch
