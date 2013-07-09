@@ -29,10 +29,10 @@
 	spush = svn dcommit
 	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
 [user]
-	name = "Thomas Moulard"
-	email = thomas.moulard@gmail.com
+	name = "Stanislas Brossette"
+	email = stanislas.brossette@gmail.com
 [github]
-	user = thomas-moulard
+	user = stanislas-brossette
 [diff]
 # git does copy/rename *detection*. if you want it to track copies/renames:
 # http://stackoverflow.com/questions/1043388/record-file-copy-operation-with-git

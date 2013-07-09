@@ -13,38 +13,30 @@
 # Global Order: zshenv, zprofile, zshrc, zlogin
 
 # Identity
-export NAME='Thomas Moulard'
+export NAME='Stanislas Brossette'
 export PAGER='less -R'
-export FULLNAME='Thomas Moulard'
-export EMAIL='thomas.moulard@gmail.com'
+export FULLNAME='Stanislas Brossette'
+export EMAIL='stanislas.brossette@gmail.com'
 export REPLYTO=$EMAIL
 
-export AIST_USERNAME='t02830'
-export SF_USERNAME='thomas_moulard'
+export AIST_USERNAME='s00402'
 
 # Tools
-export EDITOR='emacs'
+export EDITOR='gedit'
 export MAIL="/var/mail/$USER"
 export CVS_RSH=ssh
 
 test -x /usr/lib/ccache/gcc && export CC=/usr/lib/ccache/gcc
 test -x /usr/lib/ccache/g++ && export CXX=/usr/lib/ccache/g++
 
-export OMNIORB_CONFIG=$HOME/.dotfiles/.omniORB.cfg
-export OMNINAMES_LOGDIR=$HOME/.omniorb
+#export AC3D_HOME=$HOME/Downloads/ac3dlx
 
-export AC3D_HOME=$HOME/Downloads/ac3dlx
-
-export ROS_EMAIL="$EMAIL"
-
-export KEYCHAIN_KEYS="$HOME/.ssh/id_rsa 31496D58"
-
-export ROS_EMAILS=thomas.moulard@gmail.com
+export KEYCHAIN_KEYS="$HOME/.ssh/id_rsa_idh"
 
 PATH+=/usr/local/texlive/2012/bin/x86_64-linux
 
 #PROFILE="icc"
 #PROFILE="default-i386-linux-ubuntu-10.04"
-PROFILE=default-x86_64-linux-ubuntu-12.04.1
+PROFILE=pcl-x86_64-linux-ubuntu-12.04.2
 
 LD_LIBRARY_PATH+=(/opt/ros/fuerte/stacks/robot_model/urdf_parser/lib /opt/NAG/cll6a23dhl/lib/)

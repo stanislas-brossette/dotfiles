@@ -51,6 +51,6 @@ alias m=make
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github debian screen dev-profile keychain hrp2 ros cmake-build-dir)
+plugins=(git github debian screen dev-profile keychain hrp2 ros cmake-build-dir autojump command-not-found nyan web-search)
 
 source $ZSH/oh-my-zsh.sh
