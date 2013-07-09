@@ -39,4 +39,7 @@ PATH+=/usr/local/texlive/2012/bin/x86_64-linux
 #PROFILE="default-i386-linux-ubuntu-10.04"
 PROFILE=pcl-x86_64-linux-ubuntu-12.04.2
 
-LD_LIBRARY_PATH+=(/opt/ros/fuerte/stacks/robot_model/urdf_parser/lib /opt/NAG/cll6a23dhl/lib/)
+# Update LD_LIBRARY_PATH
+LD_LIBARY_PATH=/opt/ros/fuerte/stacks/robot_model/urdf_parser/lib:$LD_LIBRARY_PATH
+LD_LIBARY_PATH=/opt/NAG/cll6a23dhl/lib:$LD_LIBRARY_PATH
+export LD_LIBARY_PATH
