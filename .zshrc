@@ -20,6 +20,8 @@ alias mv='nocorrect mv'       # no spelling correction on mv
 alias cp='nocorrect cp'       # no spelling correction on cp
 alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
 alias e=emacs
+alias gy=geany
+alias qt=qtcreator
 alias m=make
 
 # Set to this to use case-sensitive completion

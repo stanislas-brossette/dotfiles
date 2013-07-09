@@ -22,7 +22,7 @@ export REPLYTO=$EMAIL
 export AIST_USERNAME='s00402'
 
 # Tools
-export EDITOR='gedit'
+export EDITOR='geany'
 export MAIL="/var/mail/$USER"
 export CVS_RSH=ssh
 
@@ -33,7 +33,7 @@ test -x /usr/lib/ccache/g++ && export CXX=/usr/lib/ccache/g++
 
 export KEYCHAIN_KEYS="$HOME/.ssh/id_rsa_idh"
 
-PATH+=/usr/local/texlive/2012/bin/x86_64-linux
+export PATH="/usr/local/texlive/2012/bin/x86_64-linux:$PATH"
 
 #PROFILE="icc"
 #PROFILE="default-i386-linux-ubuntu-10.04"
