@@ -41,7 +41,7 @@ export KEYCHAIN_KEYS="$HOME/.ssh/id_rsa 31496D58"
 
 export ROS_EMAILS=thomas.moulard@gmail.com
 
-PATH+=/usr/local/texlive/2012/bin/x86_64-linux
+export PATH=/usr/local/texlive/2012/bin/x86_64-linux:$PATH
 
 #PROFILE="icc"
 #PROFILE="default-i386-linux-ubuntu-10.04"
