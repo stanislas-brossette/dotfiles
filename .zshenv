@@ -22,7 +22,7 @@ export REPLYTO=$EMAIL
 export AIST_USERNAME='s00402'
 
 # Tools
-export EDITOR='geany'
+export EDITOR='geany -i'
 export MAIL="/var/mail/$USER"
 export CVS_RSH=ssh
 
