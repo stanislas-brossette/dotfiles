@@ -41,3 +41,14 @@
 [apply]
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
+
+
+# Never use HTTPS for my repos on GitHub.
+[url "git@github.com:thomas-moulard/"]
+        pushInsteadOf = https://github.com/thomas-moulard/
+[url "git@github.com:jrl-umi3218/"]
+        pushInsteadOf = https://github.com/jrl-umi3218/
+[url "git@github.com:laas/"]
+        pushInsteadOf = https://github.com/laas/
+[url "git@github.com:roboptim/"]
+        pushInsteadOf = https://github.com/roboptim/

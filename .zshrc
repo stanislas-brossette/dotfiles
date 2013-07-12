@@ -54,3 +54,10 @@ alias m=make
 plugins=(git github debian screen dev-profile keychain hrp2 ros cmake-build-dir)
 
 source $ZSH/oh-my-zsh.sh
+
+function sparseColor ()
+{
+    sed "s|+0.00000000|`printf \"\e[1;30m+0.00000000\e[0m\"`|g" "$*"| less -SR
+}
+
+setopt autocd
