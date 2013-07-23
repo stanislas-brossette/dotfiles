@@ -50,3 +50,5 @@ PROFILE=default-x86_64-linux-ubuntu-12.04.1
 # Update LD_LIBRARY_PATH
 export LD_LIBARY_PATH=/opt/ros/fuerte/stacks/robot_model/urdf_parser/lib:$LD_LIBRARY_PATH
 export LD_LIBARY_PATH=/opt/NAG/cll6a23dhl/lib:$LD_LIBRARY_PATH
+
+apt_pref='apt-get'
