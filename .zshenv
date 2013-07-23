@@ -37,7 +37,8 @@ export AC3D_HOME=$HOME/Downloads/ac3dlx
 
 export ROS_EMAIL="$EMAIL"
 
-export KEYCHAIN_KEYS="$HOME/.ssh/id_rsa 31496D58"
+export GPGKEY=31496D58
+export KEYCHAIN_KEYS="$HOME/.ssh/id_rsa $GPGKEY"
 
 export ROS_EMAILS=thomas.moulard@gmail.com
 
