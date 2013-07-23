@@ -1,0 +1,250 @@
+#!/usr/bin/perl
+
+q#
+  GnuPG wrapper - enable PGP 2.6.x compatible encryption with Mutt 1.0
+
+  (C)opyright 1999 by Gero Treuner <gero@faveve.uni-stuttgart.de>
+  $Id: gpg-2comp,v 1.3 1999/10/28 15:19:23 gero Exp gero $
+
+  Important note: This script is not designed to be called from other
+                  places as the Mutt mail user agent, especially not
+                  instead of gpg from a shell.
+
+  You may freely use, modify and (re)distribute this code as long as you
+   - keep this paragraph including the above copyright notice,
+   - add a note including your name when modifying this code.
+  There is no warranty of any kind, use at your own risk!
+
+  1999-10-02 Roland Rosenfeld <roland@spinnaker.de>:
+	     - Add $rsa_encryptself (--no-encrypt-to --encrypt-to was broken)
+	     - Use options file at end of encrypt+sign
+	     - Use umask 077 for temp file.
+	     - Use a secure temp file for signed message.
+  1999-10-05 Roland Rosenfeld <roland@spinnaker.de>:
+             - "exit 1" if signing fails with sign+encrypt (with wrong passph.)
+  1999-10-26 Gero:
+	     - check always for failing gpg, introduced exit_on_gpg_error
+	     - make $rsa_encryptself a boolean value (cosmetics, I admit)
+	     - change ' ' to \s in option patterns makes them more robust
+	     - don't rely on --textmode for encrypting substitutions
+	     - create new temp file the way mutt does
+	     - isolate the PGP 2 routines
+	     - added --always-trust and --comment to encrypt+sign
+#;
+
+# ------- User configuration
+
+# Let this point to your gpg binary
+$gpg = '/usr/bin/gpg';
+
+# Set to 1 if you want to sign with RSA as default
+# (if you don't specify a key explicitly with "sign as" in Mutt's compose menu)
+$use_pgp2 = 0;
+
+# Your RSA key ID
+# (to take advantage of this script, you need an RSA key - see the README file)
+#$rsa_default_key = '0x766CD151';
+
+# Set to 0 if you don't want to encrypt all RSA mails to yourself, too
+$rsa_encryptself = 1;
+
+# Comment for PGP 2 compatible encrypt+signing, which is not GnuPG-native
+# (may be helpful - unset this if you want GnuPG's original comment)
+$comment = 'Scripting by http://muppet.faveve.uni-stuttgart.de/~gero/gpg-2comp';
+
+# ------- Phase 1: Initialisation; do some checks
+
+sub exit_on_gpg_error
+{
+  if ($?)
+  {
+    print STDERR "$0: failed executing $gpg .\n";
+    exit ($? >> 8 or 1);
+  }
+}
+
+$args = join ' ', @ARGV;
+
+if ($args =~ /--(?:detach-)?sign/)
+{
+  $sign = $&;
+
+  # get the type of desired key for signing
+  if ($args =~ /\s-u\s+(\S+)/)
+  {
+    $sign_notrsa =
+      (split ':', `$gpg --batch --no-verbose --with-colons --list-keys '$1'`)[3]
+      != 1;	# = RSA
+    &exit_on_gpg_error;
+  }
+
+  # check the digest algorithm
+  if ($args =~ /\s--digest-algo\s+(\S+)/ and $1 !~ /md5/i)
+  {
+    $other_digest_algo = 1;
+  }
+}
+
+if ($args =~ /--encrypt/)
+{
+  $encrypt = $&;
+
+  # look what key types should be used for encryption
+  # The following sequence probably has to be changed for Mutt 1.1
+  unless ($args =~ /(?:\s+-r\s+\S+)+/) {
+    print STDERR "$0: Fatal error: No encryption keys specified.\n";
+    exit 1;
+  }
+  $_ = $&;
+  $crypt_keys = $_; # for later use
+  s/-r\s+//g;
+
+  @keys = `$gpg --batch --no-verbose --with-colons --list-keys $_`;
+  &exit_on_gpg_error;
+  $isall_rsa = 1;
+  foreach (@keys) {
+    /^pub:/ or next;
+    (split ':', $_)[3] == 1 ? ($have_rsa = 1) : ($isall_rsa = 0);
+  }
+}
+
+# ------- Phase 2: Decide whether to be PGP 2.6.x compatible
+
+if ($encrypt or !$sign)
+{
+  # Reset flag when doing something else than signing only
+  $use_pgp2 = 0;
+}
+
+if ($encrypt)
+{
+  if ($have_rsa)
+  {
+    if ($isall_rsa and !$sign_notrsa)
+    {
+      $use_pgp2 = 1;
+    }
+    else
+    {
+      print STDERR "$0: Other than RSA keys specified, no way to encrypt for PGP 2.\n";
+    }
+  }
+}
+
+if ($sign_notrsa)
+{
+  $use_pgp2 = 0;
+}
+
+if ($sign and $use_pgp2 and $other_digest_algo)
+{
+  print STDERR "$0: Other digest algorithm than MD5 specified, no way to sign for PGP 2.\n";
+  $use_pgp2 = 0;
+}
+
+# ------- Phase 3: Modify arguments and prepare to be PGP 2.6.x compatible
+
+if ($use_pgp2)
+{
+  if ($sign and $encrypt)
+  {
+    # need several workarounds here, first get a detached signature
+    $_ = $args;
+    s/\s--textmode//g;  s/\s--encrypt//g;
+    s/\s--armor//g;  s/\s--sign/ --detach-sign/g;
+    s/(?:\s+-r\s+\S+)+//;
+    unless (open GPG, "$gpg --rfc1991 --default-key '$rsa_default_key' $_ |")
+    {
+      $? = 1;
+      &exit_on_gpg_error;
+    }
+    read GPG, $sig, 20000; # reasonable limit for a signature
+    close GPG;
+    &exit_on_gpg_error;
+  
+    # compress signature and data in the correct PGP 2 order
+    $args =~ /\S+$/;  ($tmpfile = $&) =~ /[^\/]*$/;
+    $lit_hdr = join '',
+      pack('CNCC', 0xae, (-s $tmpfile) + 6 + length $&, ord 'b', length $&),
+      $&, pack('N', time);
+
+    # open temporary file, must be new and not a link for security
+    $signedtmp = $tmpfile . '-x';
+    if (fork)
+    {
+      wait;
+      if ($?)
+      {
+	exit 1;
+      }
+    }
+    else
+    {
+      use Fcntl;
+
+      close STDOUT;
+      if (!sysopen(STDOUT, $signedtmp, O_CREAT | O_EXCL | O_WRONLY, 0600))
+      {
+	print STDERR "$0: Fatal error: Can't open $signedtmp.\n";
+	exit 1;
+      }
+      if (join(' ', stat STDOUT) ne join(' ', lstat $signedtmp))
+      {
+	print STDERR "$0: Fatal error: $signedtmp is a link.\n";
+	exit 1;
+      }
+      unless (open GPG,
+	"| $gpg --no-verbose --batch --no-literal --store --compress-algo 1 -o -")
+      {
+	$? = 1;
+	&exit_on_gpg_error;
+      }
+      print GPG $sig, $lit_hdr;
+      open IN, $tmpfile;
+      while ($_ = <IN>)
+      {
+	print GPG $_;
+      }
+      close IN;
+      close GPG;
+      &exit_on_gpg_error;
+      close TMP;
+
+      exit 0;
+    }
+
+    # encrypt like this:
+    if ($rsa_encryptself)
+    {
+      $crypt_keys .= " -r $rsa_default_key";
+    }
+    $args = $comment ? "--comment '$comment' " : '';
+    $args .= "--no-verbose --batch -v --no-literal --encrypt --rfc1991 --cipher-algo idea --armor --no-encrypt-to --always-trust $crypt_keys -o - $signedtmp";
+  }
+
+  elsif ($sign)
+  {
+    $args = "--rfc1991 --default-key '$rsa_default_key' " . $args;
+  }
+
+  elsif ($encrypt)
+  {
+    $args =~ s/--textmode\s//g;
+    $args =~ s/(?=\s-r)/ --cipher-algo idea --compress-algo 1 --rfc1991 --no-encrypt-to/;
+    if ($rsa_encryptself)
+    {
+      $args =~ s/(?=\s-r)/ -r $rsa_default_key/;
+    }
+  }
+}
+
+# ------- Phase 4: Final GnuPG invocation; cleanup
+
+$ret = system "$gpg $args";
+
+if (-f $signedtmp)
+{
+  unlink "$signedtmp";
+}
+
+exit $ret;
