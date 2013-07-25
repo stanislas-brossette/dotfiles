@@ -5,7 +5,7 @@
 email: thomas.moulard@gmail.com
 ;password: top secret
 # or if you want to get the password from a commmand:
-passwordeval: gpg --batch -d ~/.dotfiles/gmail.dat
+passwordeval: gpg --no-tty --use-agent -q -d ~/.dotfiles/gmail.dat
 # The following are optional, defaults are shown
 cache_filename: ~/.goobook_cache
 ;cache_expiry_hours: 24

@@ -1,0 +1,36 @@
+[general]
+accounts = gmail
+maxsyncaccounts = 2
+ui = machineui
+pythonfile = ~/.dotfiles/.mutt/nametrans.py
+
+[Account gmail]
+localrepository = gmail-local
+remoterepository = gmail-remote
+status_backend = sqlite
+autorefresh = 3
+quick = 10
+postsynchook = notmuch new
+
+[Repository gmail-local]
+type = Maildir
+localfolders = ~/Mail/gmail/
+nametrans = nt_local
+
+[Repository gmail-remote]
+type = Gmail
+remoteuser = thomas.moulard@gmail.com
+remotepasseval = mailpasswd("gmail")
+realdelete = no
+cert_fingerprint = <cert fingerprint>
+nametrans = nt_remote
+
+[mbnames]
+enabled = yes
+filename = ~/.dotfiles/.mutt/mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"
+# Necessary as of OfflineIMAP 6.5.4
+sslcacertfile = ~/.certs/imap_cert.crt

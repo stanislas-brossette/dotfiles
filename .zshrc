@@ -19,8 +19,11 @@ ZSH_THEME="junkfood"
 alias mv='nocorrect mv'       # no spelling correction on mv
 alias cp='nocorrect cp'       # no spelling correction on cp
 alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
-alias e=emacs
-alias m=make
+alias m="nocorrect make -j3 -k"
+
+export ALTERNATE_EDITOR="" # Should start emacs --daemon if emacsclient runs without one.
+alias e='emacsclient -t'
+alias ec='emacsclient -c'
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -57,7 +60,7 @@ source $ZSH/oh-my-zsh.sh
 
 function sparseColor ()
 {
-    sed "s|+0.00000000|`printf \"\e[1;30m+0.00000000\e[0m\"`|g" "$*"| less -SR
+    sed "s|[+-]0.00000000|`printf \"\e[1;30m+0.00000000\e[0m\"`|g" "$*"| less -SR
 }
 
 setopt autocd

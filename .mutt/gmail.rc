@@ -1,8 +1,8 @@
 # Change the following six lines to match your Gmail account details
 set imap_user = "thomas.moulard@gmail.com"
-set imap_pass = `gpg -q --batch -r 31496D58 --decrypt ~/.dotfiles/gmail.dat`
+set imap_pass = `gpg -q --no-tty --use-agent -r 31496D58 -d ~/.dotfiles/gmail.dat`
 set smtp_url = "smtp://thomas.moulard@smtp.gmail.com:587/"
-set smtp_pass = `gpg -q --batch -r 31496D58 --decrypt ~/.dotfiles/gmail.dat`
+set smtp_pass = `gpg -q --no-tty --use-agent --batch -r 31496D58 --decrypt ~/.dotfiles/gmail.dat`
 set from = "thomas.moulard@gmail.com"
 set realname = "Thomas Moulard"
 
@@ -44,3 +44,5 @@ macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
 macro index,pager gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
 macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+
+bind index G imap-fetch-mail

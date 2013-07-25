@@ -1,3 +1,11 @@
+(server-start)
+
+(require 'color-theme)
+(color-theme-initialize)
+(if window-system
+    (color-theme-subtle-hacker)
+  (color-theme-hober))
+
 (add-to-list 'load-path "~/.dotfiles/.emacs.d")
 
 ;; remove the toolbar and menu bar
