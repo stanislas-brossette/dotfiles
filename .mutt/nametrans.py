@@ -55,6 +55,7 @@ def exclude(excludes):
 # that you store your passwords in
 
 def mailpasswd(server):
-    pw = subprocess.check_output(["gpg", "-q", "--no-tty", "-d","--use-agent",
-                                  os.environ["HOME"] + "/.dotfiles/gmail.dat"])
+    pw = subprocess.check_output(
+        ["gpg", "-q", "--no-tty", "-d","--use-agent",
+         os.environ["HOME"] + "/.dotfiles/" + server + ".dat"])
     return str(pw).strip()

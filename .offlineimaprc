@@ -1,5 +1,5 @@
 [general]
-accounts = gmail
+accounts = gmail, aist
 maxsyncaccounts = 2
 ui = machineui
 pythonfile = ~/.dotfiles/.mutt/nametrans.py
@@ -11,6 +11,15 @@ status_backend = sqlite
 autorefresh = 3
 quick = 10
 postsynchook = notmuch new
+
+[Account aist]
+localrepository = aist-local
+remoterepository = aist-remote
+status_backend = sqlite
+autorefresh = 3
+quick = 10
+postsynchook = notmuch new
+
 
 [Repository gmail-local]
 type = Maildir
@@ -25,9 +34,22 @@ realdelete = no
 cert_fingerprint = <cert fingerprint>
 nametrans = nt_remote
 
+[Repository aist-local]
+type = Maildir
+localfolders = ~/Mail/aist/
+nametrans = nt_local
+
+[Repository aist-remote]
+type = Gmail
+remoteuser = thomas.moulard@aist.go.jp
+remotepasseval = mailpasswd("aist")
+realdelete = no
+cert_fingerprint = <cert fingerprint>
+nametrans = nt_remote
+
 [mbnames]
 enabled = yes
-filename = ~/.dotfiles/.mutt/mailboxes
+filename = ~/.mutt/mailboxes
 header = "mailboxes "
 peritem = "+%(accountname)s/%(foldername)s"
 sep = " "
