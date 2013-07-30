@@ -1,0 +1,9 @@
+set realname = "Thomas Moulard"
+set from = "thomas.moulard@gmail.com"
+set use_from = yes
+set envelope_from ="yes"
+
+alternates "(thomas.moulard@gmail\.com_)|(thomas.moulard@aist\.go\.jp)"
+
+# Use a signature
+set signature="~/.signature"

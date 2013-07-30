@@ -1,0 +1,3 @@
+# smtp
+set smtp_url = "smtp://thomas.moulard@smtp.gmail.com:587/"
+set smtp_pass = `gpg -q --no-tty --use-agent --batch -r 31496D58 --decrypt ~/.dotfiles/gmail.dat`

@@ -22,6 +22,8 @@ export REPLYTO=$EMAIL
 export AIST_USERNAME='t02830'
 export SF_USERNAME='thomas_moulard'
 
+export MAIL=$HOME/Mail
+
 # Tools
 export EDITOR='emacs'
 export MAIL="/var/mail/$USER"
