@@ -1,0 +1,8 @@
+set jid = thomas.moulard@gmail.com
+set server = talk.google.com
+set ssl = 1
+set ssl_ignore_checks = 0
+set port = 5223
+
+bind 560 = roster up
+bind 519 = roster down
