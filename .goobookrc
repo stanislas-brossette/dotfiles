@@ -9,4 +9,4 @@ passwordeval: gpg --no-tty --use-agent -q -d ~/.dotfiles/gmail.dat
 # The following are optional, defaults are shown
 cache_filename: ~/.goobook_cache
 ;cache_expiry_hours: 24
-;filter_groupless_contacts: yes
+filter_groupless_contacts: no

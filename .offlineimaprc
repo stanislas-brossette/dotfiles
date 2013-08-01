@@ -1,6 +1,7 @@
 [general]
 accounts = gmail, aist
 maxsyncaccounts = 2
+maxconnections = 10
 ui = machineui
 pythonfile = ~/.dotfiles/.mutt/nametrans.py
 

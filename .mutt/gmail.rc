@@ -1,5 +1,5 @@
-set postponed = "+[GMail]/Drafts"
-set record = "+[GMail]/Sent Mail"
+#set postponed = "+[GMail].Drafts"
+#set record = "+[GMail].Sent Mail"
 set header_cache=~/.mutt/cache/headers
 set message_cachedir=~/.mutt/cache/bodies
 set certificate_file=~/.mutt/certificates
