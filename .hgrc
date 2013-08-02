@@ -1,0 +1,11 @@
+[web]
+cacerts=
+[ui]
+user = Thomas Moulard <thomas.moulard@gmail.com>
+[extensions]
+mq = 
+[hostfingerprints]
+choreonoid.org = b2:f3:3f:e4:ab:dc:23:07:ef:8c:9a:06:a2:97:34:9c:34:b1:a7:a8
+[auth]
+bb.prefix = https://choreonoid.org
+bb.username = moulard
