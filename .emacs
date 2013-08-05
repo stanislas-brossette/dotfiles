@@ -8,9 +8,14 @@
 
 (add-to-list 'load-path "~/.dotfiles/.emacs.d")
 
-;; remove the toolbar and menu bar
+;; remove the useless parts of the GUI
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+(scroll-bar-mode -1)
+
+;; do not show the startup message
+(setq inhibit-startup-message t
+      inhibit-startup-echo-area-message t)
 
 ;; backup in temporary directory
 (setq backup-directory-alist
@@ -60,3 +65,18 @@
           (lambda ()
             (flyspell-prog-mode)
 	    ))
+
+;; auto-indent all the time
+(define-key global-map (kbd "RET") 'newline-and-indent)
+
+;; enable ido
+(ido-mode 1)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+
+;; get rid of trailing whitespaces
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; use re-builder
+(require 're-builder)
+(setq reb-re-syntax 'string)
