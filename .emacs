@@ -80,3 +80,7 @@
 ;; use re-builder
 (require 're-builder)
 (setq reb-re-syntax 'string)
+
+;; prevent emacs from splitting windows
+(setq split-height-threshold 1200)
+(setq split-width-threshold 2000)
