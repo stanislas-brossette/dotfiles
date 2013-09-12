@@ -64,3 +64,7 @@ function sparseColor ()
 }
 
 setopt autocd
+
+if [ -f  $HOME/.travis/travis.sh ]; then
+    . /home/moulard/.travis/travis.sh
+fi
