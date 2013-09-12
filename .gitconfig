@@ -42,6 +42,8 @@
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
 
+[push]
+	simple
 
 # Never use HTTPS for my repos on GitHub.
 [url "git@github.com:thomas-moulard/"]
