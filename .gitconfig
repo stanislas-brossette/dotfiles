@@ -54,3 +54,14 @@
         pushInsteadOf = https://github.com/laas/
 [url "git@github.com:roboptim/"]
         pushInsteadOf = https://github.com/roboptim/
+
+[url "git@github.com:jrl-umi3218/"]
+        pushInsteadOf = git://github.com/jrl-umi3218/
+[url "git@github.com:laas/"]
+        pushInsteadOf = git://github.com/laas/
+[url "git@github.com:stack-of-tasks/"]
+        pushInsteadOf = git://github.com/stack-of-tasks/
+[url "git@github.com:roboptim/"]
+        pushInsteadOf = git://github.com/roboptim/
+[credential]
+	helper = /home/moulard/profiles/default-x86_64-linux-ubuntu-12.04.1/install/unstable/bin/git-credential-gnome-keyring

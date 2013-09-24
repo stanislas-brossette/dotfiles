@@ -1,0 +1,23 @@
+# Named directories.
+p=@PROFILE_DIR@
+pb=$p/build; pi=$p/install; ps=$p/src
+
+# Add prefix to PATH
+export PATH="$pi/bin:$PATH"
+export PATH="$pi/sbin:$PATH"
+
+# Update LD_LIBRARY_PATH to find locally installed libraries.
+export LD_LIBRARY_PATH="$pi/lib:$LD_LIBRARY_PATH"
+
+# Look for locally installed man pages.
+export MANPATH="$MANPATH:$pi/share/man"
+
+# Libtool (ltdl)
+export LTDL_LIBRARY_PATH="$pi/lib/roboptim-core:$LTDL_LIBRARY_PATH"
+
+# pkg-config
+export PKG_CONFIG_PATH="$pi/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+# Python
+@PYTHON_SITE_PACKAGES@
+@PYTHON_DIST_PACKAGES@
