@@ -152,3 +152,6 @@ qrc_*.cpp
 *.d
 *.fls
 *.temp
+
+# Vim swap files
+.vimswap/
