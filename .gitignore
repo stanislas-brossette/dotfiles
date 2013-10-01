@@ -145,5 +145,10 @@ tramp
 *.pro.user.*
 moc_*.cpp
 qrc_*.cpp
-Makefile
 *-build-*
+
+# Latex make files
+*.make
+*.d
+*.fls
+*.temp

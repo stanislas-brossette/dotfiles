@@ -23,6 +23,11 @@ alias e=emacs
 alias gy=geany
 alias qt=qtcreator
 alias m=make
+alias srcfuerte='source /opt/ros/fuerte/setup.zsh'
+alias srcgroovy='source /opt/ros/groovy/setup.zsh'
+alias srchydro='source /opt/ros/hydro/setup.zsh'
+
+alias cleanTmp="find -name '*~' -exec echo mv \{\} /tmp \;"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
