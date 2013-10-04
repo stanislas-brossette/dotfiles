@@ -1,0 +1,19 @@
+#.notmuch-config - Configuration file for the notmuch mail system
+#
+# For more information about notmuch, see http://notmuchmail.org
+[database]
+path=/home/moulard/Mail/
+
+[user]
+name=Thomas Moulard
+primary_email=thomas.moulard@gmail.com
+
+[new]
+tags=unread;inbox;INBOX;
+ignore=zspam;ztrash;zflagged;
+
+[search]
+exclude_tags=deleted;spam;trash;zspam;ztrash;
+
+[maildir]
+synchronize_flags=true

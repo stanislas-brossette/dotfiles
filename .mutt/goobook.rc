@@ -1,0 +1,4 @@
+# Googbook will retrieve the Google contacts for you.
+# sudo easy_install -U goobook
+set query_command="goobook query '%s'"
+bind editor <Tab> complete-query

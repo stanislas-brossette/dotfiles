@@ -1,0 +1,69 @@
+GnuPG wrapper - enable PGP 2.6.x compatible encryption with Mutt 1.0
+
+(C)opyright 1999 by Gero Treuner <gero@faveve.uni-stuttgart.de>
+$Id: README,v 1.3 1999/10/28 15:19:23 gero Exp gero $
+
+You may freely use, modify and (re)distribute this text as long as you
+ - keep this paragraph including the above copyright notice,
+ - add a note including your name when modifying this code.
+There is no warranty of any kind, use at your own risk!
+
+-------
+
+This directory contains the following files:
+
+   README           -  this file
+   gpg-2comp        -  a perl wrapper program for the mutt mail user agent
+   gpg-2comp-steps  -  a tutorial to encrypt and sign for PGP 2.6.x
+
+
+To install the wrapper program do the following steps:
+
+1. Get and install GnuPG 0.9.8 or higher from http://www.gnupg.org/ or
+   some other place, the binary is called 'gpg'.
+2. Get and install the RSA and IDEA modules for GnuPG available
+   at ftp://ftp.gnupg.org/pub/gcrypt/contrib/ with respect to patents
+   and licenses.
+3. Import your RSA key (which gpg can't create) to your secret keyring.
+4. Copy gpg-2comp to an appropriate place, edit it to contain
+   the correct path of the gpg binary, your RSA key ID and whether
+   you prefer signing with RSA or other algorithm.
+5. Configure mutt international version ( <=0.95 and 1.0) to execute the
+   following statements with the correct path of gpg-2comp:
+      set pgp_default_version=gpg
+      set pgp_gpg=/path/to/gpg-2comp
+   That's it.
+
+
+Usage for encrypting and signing mail messages:
+
+Choose the pgp options in mutt's compose menu as described in its manual.
+However, to let gpg generate messages which can be decrypted and checked
+by PGP versions 2.6.x, all keys for encrypting and signing must be of
+type RSA, indicated by an "R" after the key length in a
+   gpg --list-keys
+display or the key selection menu.
+
+
+Installing the script in a system area:
+
+There isn't much point in specifying RSA keys in the script, because
+every user has one of her/his own. Extract the configuration part of
+the script and turn it to a sample configuration file (Perl requires
+a true expression like "1;" at the end). Then replace the configuration
+part in the script by something like this:
+
+   $config = $ENV{'HOME'} . '/.gpg-2comprc';
+   unless (-f $config)
+   {
+     print STDERR $0, <<'MSG';
+   : Configuration file needed.
+
+   To create it, copy the sample file /path/of/your/sample to ~/.gpg-2comprc
+   and edit it:
+     1. insert the key ID of your RSA key
+     2. ...
+   MSG
+     exit 1;
+   }
+   require $config;

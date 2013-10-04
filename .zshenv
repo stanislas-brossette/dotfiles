@@ -21,6 +21,8 @@ export REPLYTO=$EMAIL
 
 export AIST_USERNAME='s00402'
 
+export MAIL=$HOME/Mail
+
 # Tools
 export EDITOR='vim'
 export MAIL="/var/mail/$USER"

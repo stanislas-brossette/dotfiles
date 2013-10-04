@@ -1,0 +1,11 @@
+# mr configuration file for RobOptim repositories.
+#
+# The use of submodules requires this config file to be trusted.
+# man MR(1) for more information.
+
+[roboptim-core]
+checkout = git clone --recursive https://github.com/roboptim/roboptim-core.git
+[roboptim-core-plugin-nag]
+checkout = git clone --recursive https://github.com/roboptim/roboptim-core-plugin-nag.git
+[roboptim-trajectory]
+checkout = git clone --recursive https://github.com/roboptim/roboptim-trajectory.git
