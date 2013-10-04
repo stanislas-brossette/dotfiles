@@ -1,6 +1,6 @@
 # -*- mode: shell-script -*-
 
-if `test x$(which clang 2> /dev/null) = x`; then
+if `test "x$(which clang 2> /dev/null)" = x`; then
     _cmake_build_dir_has_clang=
 else
     _cmake_build_dir_has_clang=:
