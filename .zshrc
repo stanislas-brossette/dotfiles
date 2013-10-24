@@ -22,6 +22,7 @@ alias mv='nocorrect mv'       # no spelling correction on mv
 alias cp='nocorrect cp'       # no spelling correction on cp
 alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
 alias e=emacs
+alias v=vim
 alias gy=geany
 alias qt=qtcreator
 alias m=make
@@ -36,7 +37,7 @@ alias e='emacsclient -t'
 alias ec='emacsclient -c'
 
 DISABLE_AUTO_UPDATE="true"
-plugins=(git github debian screen dev-profile keychain hrp2 cmake-build-dir)
+plugins=(git github debian screen dev-profile keychain hrp2 ros cmake-build-dir autojump command-not-found nyan web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -50,7 +51,6 @@ setopt autocd
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github debian screen dev-profile keychain hrp2 ros cmake-build-dir autojump command-not-found nyan web-search)
 
 if [ -f /etc/zsh_command_not_found ]; then
     . /etc/zsh_command_not_found

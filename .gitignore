@@ -154,3 +154,7 @@ qrc_*.cpp
 
 # Vim swap files
 .vimswap/
+
+# François build folders
+cbbuild
+ubuild

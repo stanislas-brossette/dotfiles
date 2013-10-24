@@ -41,10 +41,5 @@ export PATH="/usr/local/texlive/2012/bin/x86_64-linux:$PATH"
 #PROFILE="default-i386-linux-ubuntu-10.04"
 PROFILE=pcl-x86_64-linux-ubuntu-12.04.2
 
-# Update LD_LIBRARY_PATH
-LD_LIBARY_PATH=/opt/ros/fuerte/stacks/robot_model/urdf_parser/lib:$LD_LIBRARY_PATH
-LD_LIBARY_PATH=/opt/NAG/cll6a23dhl/lib:$LD_LIBRARY_PATH
-export LD_LIBARY_PATH
-
 export OPENNI2_INCLUDE=/usr/include/openni2
 export OPENNI2_REDIST=/usr/lib
