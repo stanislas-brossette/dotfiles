@@ -19,12 +19,12 @@ set statusline=%<%f%h%m%r%=%l,%c\ %P
 " Largeur maxi du texte inséré
 " '72' permet de wrapper automatiquement à 72 caractères
 " '0' désactive la fonction
-set textwidth=0
+set textwidth=80
 
 " Wrappe à 72 caractères avec la touche '#'
 map # gwap
 " Wrappe et justifie à 72 caractères avec la touche '@'
-map @ {v}! par 72j
+map @ {v}! par 80j
 
 " Ne pas assurer la compatibilité avec l'ancien Vi
 set nocompatible
@@ -50,7 +50,7 @@ set nostartofline
 set wildmode=list:full
 " Par défaut, ne garde pas l'indentation de la ligne précédente
 " quand on commence une nouvelle ligne
-set noautoindent
+" set noautoindent
 " Options d'indentation pour un fichier C
 set cinoptions=(0
 
@@ -64,8 +64,9 @@ endif
 " Quand on fait de la programmation, on veut qu'il n'y ait jamais de
 " vraies tabulations insérées mais seulement des espaces
 set expandtab
-set tabstop=4
-
+set tabstop=2
+set shiftwidth=2
+set cindent
 " Décommentez les 2 lignes suivantes si vous voulez avoir les tabulations et
 " les espaces marqués en caractères bleus
 "set list
@@ -89,14 +90,10 @@ set hlsearch
 "set number
 
 "Store swap files in fixed location, not current directory.
-set dir=~/.vimswap//,/var/tmp//,/tmp//,.
+set dir=~/.dotfiles/.vimswap//,/var/tmp//,/tmp//,.
 
 "Filetype detection for indent and highlighting
 filetype plugin indent on
-
-"Map the 'Enter' key in Normal mode with adding a new line
-nmap <S-Enter> O<Esc>
-nmap <CR> o<Esc>
 
 "Map NERDTree on current dir to <F12>
 map <F12> :NERDTreeToggle<CR>

@@ -37,7 +37,7 @@ function makeBuildDirectory
 	for p in `echo $CMAKE_PROFILES`; do
 	    echo "*** Creating profile $p (clang)..."
 	    mkdir -p "$d/$CMAKE_BUILD_PREFIX/clang+$p"
-	    (cd "$d/$CMAKE_BUILD_PREFIX/$p" && \
+	    (cd "$d/$CMAKE_BUILD_PREFIX/clang+$p" && \
 		CC=clang CXX=clang++ cmake \
 		cmake $COMMON_FLAGS `echo $$CMAKE_PROFILE_$p` "$d")
 	    echo "*** ...done!"

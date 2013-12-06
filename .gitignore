@@ -158,3 +158,4 @@ qrc_*.cpp
 # François build folders
 cbbuild
 ubuild
+_build
