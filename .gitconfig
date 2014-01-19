@@ -29,7 +29,7 @@
 	spush = svn dcommit
 	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
 [user]
-	name = "Stanislas Brossette"
+	name = stanislas-brossette
 	email = stanislas.brossette@gmail.com
 [github]
 	user = stanislas-brossette
