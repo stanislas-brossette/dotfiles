@@ -160,3 +160,6 @@ qrc_*.cpp
 cbbuild
 ubuild
 _build
+
+# oh-my-zsh folder
+oh-my-zsh/
