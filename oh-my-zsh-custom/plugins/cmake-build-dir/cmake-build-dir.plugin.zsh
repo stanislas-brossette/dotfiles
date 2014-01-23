@@ -21,7 +21,7 @@ function makeBuildDirectory
 	return 1
     fi
 
-    COMMON_FLAGS="-DCMAKE_INSTALL_PREFIX=$piu"
+    COMMON_FLAGS="-DCMAKE_INSTALL_PREFIX=$pi"
 
     # Create default GCC profiles.
     for p in `echo $CMAKE_PROFILES`; do
