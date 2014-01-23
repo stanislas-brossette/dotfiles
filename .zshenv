@@ -37,9 +37,7 @@ export KEYCHAIN_KEYS="$HOME/.ssh/id_rsa_idh"
 
 #export PATH="/usr/local/texlive/2012/bin/x86_64-linux:$PATH"
 
-#PROFILE="icc"
-#PROFILE="default-i386-linux-ubuntu-10.04"
-#PROFILE=pcl-x86_64-linux-ubuntu-12.04.2
+PROFILE="default-x86_64-linux-ubuntu-13.04"
 
 #export OPENNI2_INCLUDE=/usr/include/openni2
 #export OPENNI2_REDIST=/usr/lib
