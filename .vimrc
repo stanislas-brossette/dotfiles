@@ -95,5 +95,7 @@ set dir=~/.dotfiles/.vimswap//,/var/tmp//,/tmp//,.
 "Filetype detection for indent and highlighting
 filetype plugin indent on
 
+execute pathogen#infect()
+
 "Map NERDTree on current dir to <F12>
 map <F12> :NERDTreeToggle<CR>
