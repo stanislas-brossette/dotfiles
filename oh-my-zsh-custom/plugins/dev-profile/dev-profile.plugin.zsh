@@ -53,7 +53,7 @@ function create_profile()
     fi
 
 # Fill directories.
-    cp "$ZSH/plugins/dev-profile/config.sh.in" "$PROFILES_DIR/$1/config.sh"
+    cp "$ZSH_CUSTOM/plugins/dev-profile/config.sh.in" "$PROFILES_DIR/$1/config.sh"
     sed -i \
 	-e "s|@PROFILE_DIR@|$PROFILES_DIR/$1|g" \
 	-e "s|@PYTHON_SITE_PACKAGES@|$PYTHON_SITE_PACKAGES|g" \
