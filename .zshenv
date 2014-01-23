@@ -41,5 +41,5 @@ export KEYCHAIN_KEYS="$HOME/.ssh/id_rsa_idh"
 #PROFILE="default-i386-linux-ubuntu-10.04"
 #PROFILE=pcl-x86_64-linux-ubuntu-12.04.2
 
-export OPENNI2_INCLUDE=/usr/include/openni2
-export OPENNI2_REDIST=/usr/lib
+#export OPENNI2_INCLUDE=/usr/include/openni2
+#export OPENNI2_REDIST=/usr/lib
