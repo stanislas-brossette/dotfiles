@@ -13,7 +13,7 @@ export LD_LIBRARY_PATH="$pi/lib:$LD_LIBRARY_PATH"
 export MANPATH="$MANPATH:$pi/share/man"
 
 # Libtool (ltdl)
-export LTDL_LIBRARY_PATH="$pi/lib/roboptim-core:$LTDL_LIBRARY_PATH"
+export LTDL_LIBRARY_PATH="$pi/lib/x86_64-linux-gnu/roboptim-core:$LTDL_LIBRARY_PATH"
 
 # pkg-config
 export PKG_CONFIG_PATH="$pi/lib/pkgconfig:$PKG_CONFIG_PATH"
