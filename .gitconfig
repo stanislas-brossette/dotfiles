@@ -18,8 +18,8 @@
 	c = commit
 	cm = commit -m
 	ca = commit --amend # careful
-	ac = !git add . && git commit
-	acm = !git add . && git commit -m
+	ac = !git add $1 && git commit
+	acm = !sh git add $1 && git commit -m $2
 	l = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
 	ll = log --stat --abbrev-commit
 	d = diff --color-words

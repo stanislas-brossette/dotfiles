@@ -55,3 +55,7 @@ setopt autocd
 if [ -f /etc/zsh_command_not_found ]; then
     . /etc/zsh_command_not_found
 fi
+
+export CDPATH="$CDPATH:$ps"
+
+setopt no_share_history

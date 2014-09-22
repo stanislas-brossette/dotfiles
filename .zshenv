@@ -31,13 +31,6 @@ export CVS_RSH=ssh
 test -x /usr/lib/ccache/gcc && export CC=/usr/lib/ccache/gcc
 test -x /usr/lib/ccache/g++ && export CXX=/usr/lib/ccache/g++
 
-#export AC3D_HOME=$HOME/Downloads/ac3dlx
-
 export KEYCHAIN_KEYS="$HOME/.ssh/id_rsa_idh"
 
-#export PATH="/usr/local/texlive/2012/bin/x86_64-linux:$PATH"
-
 PROFILE="default-x86_64-linux-ubuntu-13.04"
-
-#export OPENNI2_INCLUDE=/usr/include/openni2
-#export OPENNI2_REDIST=/usr/lib

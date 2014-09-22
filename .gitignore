@@ -156,10 +156,11 @@ qrc_*.cpp
 # Vim swap files
 .vimswap/
 
-# François build folders
+# build folders
 cbbuild
 ubuild
 _build
+build
 
 # oh-my-zsh folder
 oh-my-zsh/
