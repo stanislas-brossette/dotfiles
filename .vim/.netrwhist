@@ -1,7 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/home/stanislas/profiles/pcl-x86_64-linux-ubuntu-12.04.2/src/unstable/DisplayPCD'
 let g:netrw_dirhist_2='/home/stanislas/.dotfiles'
 let g:netrw_dirhist_3='/home/stanislas/profiles/pcl-x86_64-linux-ubuntu-12.04.2/install/unstable/lib/x86_64-linux-gnu/pkgconfig'
 let g:netrw_dirhist_4='/home/stanislas/devel/amelif-8/bin/afresources/xml/Planner/hrp2_10'
 let g:netrw_dirhist_5='/'
+let g:netrw_dirhist_6='/home/stanislas/profiles/default-x86_64-linux-ubuntu-13.04/src/matlab2roboptim/src/GeneratedFiles'
+let g:netrw_dirhist_7='/home/stanislas/.dotfiles/.vim'
+let g:netrw_dirhist_8='/home/stanislas/.dotfiles/.vim/colors'
