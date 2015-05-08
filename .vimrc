@@ -3,6 +3,77 @@ set nocompatible
 
 call plug#begin('~/.vim/plugged')
 
+" set leader keys
+let mapleader = ','
+let maplocalleader = ';'
+
+" Unite and create user interfaces 
+" http://www.vim.org/scripts/script.php?script_id=3396
+Plug 'Shougo/unite.vim'
+" Unite {{{
+   "" General options
+   "let g:unite_enable_start_insert = 1
+   "let g:unite_data_directory = expand("~/.vim/unite")
+   "let g:unite_source_history_yank_enable = 1
+
+   ""call unite#custom#profile('default', 'context', {
+   ""      \ 'winheight': 10,
+   ""      \ 'direction': 'botright',
+   ""      \ 'prompt': '» ',
+   ""      \ })
+
+   """ Ignore build directories
+   ""call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\/build')
+   ""call unite#custom#source('grep', 'ignore_pattern', '\/build')
+
+   "" File
+   "let g:unite_source_file_ignore_pattern =
+         "\'tmp\|^\%(/\|\a\+:/\)$\|\~$\|\.\%(o|exe|dll|bak|sw[po]\)$'
+
+   "" Search
+   "let g:unite_source_grep_max_candidates=1000
+   "let g:unite_source_find_max_candidates=1000
+
+   "" silver_searcher
+   "if executable('ag')
+     "let g:unite_source_grep_command = 'ag'
+     "let g:unite_source_grep_default_opts = '-f --line-numbers --nocolor --nogroup -i ' .
+           "\ '--hidden --ignore ".hg" --ignore ".svn" --ignore ".git" ' .
+           "\ '--ignore "bzr" --ignore ".svg"  '
+     "let g:unite_source_grep_recursive_opt = ''
+   "endif
+
+   "" Mappings {{{
+     "nnoremap [unite] <Nop>
+     "nmap ' <SID>[unite]
+
+     "nnoremap <SID>[unite]u :<C-u>Unite
+     "nnoremap <SID>[unite]' :<C-u>Unite buffer file<CR>
+     "nnoremap <SID>[unite]b :<C-u>Unite buffer<CR>
+     "nnoremap <SID>[unite]f :<C-u>Unite file<CR>
+     ""nnoremap <SID>[unite]H :<C-u>Unite help<CR>
+     ""nnoremap <SID>[unite]t :<C-u>Unite tag<CR>
+     ""nnoremap <SID>[unite]T :<C-u>Unite -immediately -no-start-insert tag:<C-r>=expand('<cword>')<CR><CR>
+     "nnoremap <SID>[unite]w :<C-u>Unite tab<CR>
+     ""nnoremap <SID>[unite]m :<C-u>Unite file_mru<CR>
+     "nnoremap <SID>[unite]o :<C-u>Unite outline<CR>
+     "nnoremap <SID>[unite]q :<C-u>Unite qf -no-quit<CR>
+     ""nnoremap <SID>[unite]M :<C-u>Unite mark<CR>
+     "nnoremap <SID>[unite]r :<C-u>Unite register<CR>
+     "nnoremap <SID>[unite]g :<C-u>Unite grep -no-quit -direction=botright -buffer-name=grep-buffer<CR>
+
+     "" Grep-like search
+     "nnoremap <Leader>/  :Unite grep -no-quit<CR><CR>
+     "nnoremap <Leader>// :Unite grep -no-quit<CR>
+     "vnoremap <Leader>/  y:Unite grep -no-quit<CR><CR><C-R>=escape(@", '\\.*$^[]')<CR><CR>
+
+     "" File search, CtrlP style
+     "nnoremap <C-p> :<C-u>Unite -buffer-name=files -start-insert -default-action=open file_rec/async:!<CR>
+     "nnoremap <C-p>p :<C-u>Unite -buffer-name=files -start-insert -default-action=open file_rec/async:
+   "" }}}oremap <space>s :Unite -quick-match buffer<cr>
+   ""
+Plug 'thinca/vim-qfreplace'
+
 " Make sure you use single quotes
 " Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
@@ -23,26 +94,26 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Unmanaged plugin (manually installed and updated)
 " Plug '~/my-prototype-plugin'
 
-" NeoComplete
-Plug 'Shougo/neocomplete.vim'
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" AutoComplPop like behavior.
-let g:neocomplete#enable_auto_select = 0
-let g:neocomplete#enable_refresh_always = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#auto_completion_start_length = 3
-"let g:neocomplete#enable_prefetch = 1
-let g:neocomplete#skip_auto_completion_time = "0.1"
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 4
-"let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-let g:neocomplete#use_vimproc = 1
-let g:neocomplete#enable_omni_fallback = 0
-
+"" NeoComplete
+"Plug 'Shougo/neocomplete.vim'
+"" Disable AutoComplPop.
+"let g:acp_enableAtStartup = 0
+"" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 0
+"let g:neocomplete#enable_refresh_always = 0
+"" Use neocomplete.
+"let g:neocomplete#enable_at_startup = 0
+"" Use smartcase.
+"let g:neocomplete#enable_smart_case = 1
+"let g:neocomplete#auto_completion_start_length = 3
+""let g:neocomplete#enable_prefetch = 1
+"let g:neocomplete#skip_auto_completion_time = "0.1"
+"" Set minimum syntax keyword length.
+"let g:neocomplete#sources#syntax#min_keyword_length = 4
+""let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+"let g:neocomplete#use_vimproc = 1
+"let g:neocomplete#enable_omni_fallback = 0
+"inoremap <expr><Tab> pumvisible() ? \<Tab>" : neocomplete#start_manual_complete()
 " VimProc
 Plug 'Shougo/vimproc.vim', { 'do': 'make'}
 
@@ -66,8 +137,9 @@ let g:UltiSnipsListSnippets="<c-tab>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 " Custom snippets
-let g:UltiSnipsSnippetsDir = "~/.vim/plugged/vim-snippets/custom_snippets"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
+let g:UltiSnipsSnippetsDir='~/.dotfiles/custom_snippets'
+let g:UltiSnipsSnippetDirectories=['custom_snippets', 'UltiSnips']
+"let g:UltiSnipsSnippetDirectories=["custom_snippets"]
 " Prevent UltiSnips from stealing ctrl-k.
 augroup VimStartup
 autocmd!
@@ -81,15 +153,24 @@ augroup end
 Plug 'vim-scripts/DoxygenToolkit.vim'
 let g:DoxygenToolkit_commentType = "C++"
 
+Plug 'scrooloose/nerdcommenter'
+
+Plug 'kien/ctrlp.vim'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
 call plug#end()
 
 " System clipboard support
 if has('clipboard')
-  if has('unnamedplus') " When possible use + register for copy-paste
-    set clipboard=unnamed,unnamedplus
-  else " On mac and Windows, use * register for copy-paste
-    set clipboard=unnamed
-  endif
+ "if has('unnamedplus') " When possible use + register for copy-paste
+   "set clipboard=unnamed,unnamedplus
+ "else " On mac and Windows, use * register for copy-paste
+   "set clipboard=unnamed
+ "endif
 endif
 
 " set UTF-8 encoding
@@ -105,7 +186,7 @@ set tabstop=2        " tab width is 2 spaces
 set shiftwidth=2     " indent also with 2 spaces
 set expandtab        " expand tabs to spaces
 " wrap lines at 120 chars. 80 is somewaht antiquated with nowadays displays.
-set textwidth=8000
+set textwidth=80
 " turn syntax highlighting on
 set t_Co=256
 syntax on
@@ -127,6 +208,9 @@ set statusline=%<%f%h%m%r%=%l,%c\ %P
 " Autorise le passage d'une ligne à l'autre avec les flèches gauche et droite
 set whichwrap=<,>,[,]
 
+" Allow mouse use
+set mouse=a
+
 
 " Press F3 to toggle highlighting on/off, and show current value.
 noremap <F3> :set hlsearch! hlsearch?<CR>
@@ -137,6 +221,7 @@ nmap <F5> :w<CR>
 " in insert mode F5 will exit insert, save, enters insert again
 imap <F5> <ESC>:w<CR>i
 " F3: Toggle list (display unprintable characters).
+map <F6> :so ~/.dotfiles/.vimrc<CR>
 nnoremap <F9> :set list!<CR>
 " Press F10 to toggle set number on/off, and show current value.
 noremap <F10> :set number! number?<CR>

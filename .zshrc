@@ -26,6 +26,7 @@ alias v=vim
 alias gy=geany
 alias qt=qtcreator
 alias m=make
+alias m='make -j7'
 alias srcfuerte='source /opt/ros/fuerte/setup.zsh'
 alias srcgroovy='source /opt/ros/groovy/setup.zsh'
 alias srchydro='source /opt/ros/hydro/setup.zsh'

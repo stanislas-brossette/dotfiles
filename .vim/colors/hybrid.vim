@@ -114,7 +114,7 @@ else
     let s:foreground = "15"   " White
     let s:selection  = "8"    " DarkGrey
     let s:line       = "0"    " Black
-    let s:comment    = "7"    " LightGrey
+    let s:comment    = "4"    " LightGrey
     let s:red        = "9"    " LightRed
     let s:orange     = "3"    " DarkYellow
     let s:yellow     = "11"   " LightYellow

@@ -21,4 +21,7 @@ mkdir ~/.gnupg 2> /dev/null || true
 ln -sf `pwd`/.ssh/config ~/.ssh/config
 ln -sf `pwd`/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 
+# Add custom snippets
+ln -sf `pwd`/custom_snippets $HOME/.vim/plugged/vim-snippets/ 
+
 echo "symbolic links have been created successfully"
