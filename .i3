@@ -1,0 +1,1 @@
+/home/stanislas/.i3

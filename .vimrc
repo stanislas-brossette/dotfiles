@@ -10,68 +10,7 @@ let maplocalleader = ';'
 " Unite and create user interfaces 
 " http://www.vim.org/scripts/script.php?script_id=3396
 Plug 'Shougo/unite.vim'
-" Unite {{{
-   "" General options
-   "let g:unite_enable_start_insert = 1
-   "let g:unite_data_directory = expand("~/.vim/unite")
-   "let g:unite_source_history_yank_enable = 1
 
-   ""call unite#custom#profile('default', 'context', {
-   ""      \ 'winheight': 10,
-   ""      \ 'direction': 'botright',
-   ""      \ 'prompt': '» ',
-   ""      \ })
-
-   """ Ignore build directories
-   ""call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\/build')
-   ""call unite#custom#source('grep', 'ignore_pattern', '\/build')
-
-   "" File
-   "let g:unite_source_file_ignore_pattern =
-         "\'tmp\|^\%(/\|\a\+:/\)$\|\~$\|\.\%(o|exe|dll|bak|sw[po]\)$'
-
-   "" Search
-   "let g:unite_source_grep_max_candidates=1000
-   "let g:unite_source_find_max_candidates=1000
-
-   "" silver_searcher
-   "if executable('ag')
-     "let g:unite_source_grep_command = 'ag'
-     "let g:unite_source_grep_default_opts = '-f --line-numbers --nocolor --nogroup -i ' .
-           "\ '--hidden --ignore ".hg" --ignore ".svn" --ignore ".git" ' .
-           "\ '--ignore "bzr" --ignore ".svg"  '
-     "let g:unite_source_grep_recursive_opt = ''
-   "endif
-
-   "" Mappings {{{
-     "nnoremap [unite] <Nop>
-     "nmap ' <SID>[unite]
-
-     "nnoremap <SID>[unite]u :<C-u>Unite
-     "nnoremap <SID>[unite]' :<C-u>Unite buffer file<CR>
-     "nnoremap <SID>[unite]b :<C-u>Unite buffer<CR>
-     "nnoremap <SID>[unite]f :<C-u>Unite file<CR>
-     ""nnoremap <SID>[unite]H :<C-u>Unite help<CR>
-     ""nnoremap <SID>[unite]t :<C-u>Unite tag<CR>
-     ""nnoremap <SID>[unite]T :<C-u>Unite -immediately -no-start-insert tag:<C-r>=expand('<cword>')<CR><CR>
-     "nnoremap <SID>[unite]w :<C-u>Unite tab<CR>
-     ""nnoremap <SID>[unite]m :<C-u>Unite file_mru<CR>
-     "nnoremap <SID>[unite]o :<C-u>Unite outline<CR>
-     "nnoremap <SID>[unite]q :<C-u>Unite qf -no-quit<CR>
-     ""nnoremap <SID>[unite]M :<C-u>Unite mark<CR>
-     "nnoremap <SID>[unite]r :<C-u>Unite register<CR>
-     "nnoremap <SID>[unite]g :<C-u>Unite grep -no-quit -direction=botright -buffer-name=grep-buffer<CR>
-
-     "" Grep-like search
-     "nnoremap <Leader>/  :Unite grep -no-quit<CR><CR>
-     "nnoremap <Leader>// :Unite grep -no-quit<CR>
-     "vnoremap <Leader>/  y:Unite grep -no-quit<CR><CR><C-R>=escape(@", '\\.*$^[]')<CR><CR>
-
-     "" File search, CtrlP style
-     "nnoremap <C-p> :<C-u>Unite -buffer-name=files -start-insert -default-action=open file_rec/async:!<CR>
-     "nnoremap <C-p>p :<C-u>Unite -buffer-name=files -start-insert -default-action=open file_rec/async:
-   "" }}}oremap <space>s :Unite -quick-match buffer<cr>
-   ""
 Plug 'thinca/vim-qfreplace'
 
 " Make sure you use single quotes
@@ -81,6 +20,9 @@ Plug 'junegunn/vim-easy-align'
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+" Enhanced syntax highlighting for C++
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 " Using git URL
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
@@ -125,8 +67,86 @@ Plug 'honza/vim-snippets'
 
 " SuperTab
 Plug 'ervandew/supertab'
+
+" DoxygenToolkit.vim : Simplify Doxygen documentation in C, C++, Python. 
+Plug 'vim-scripts/DoxygenToolkit.vim'
+let g:DoxygenToolkit_commentType = "C++"
+
+Plug 'scrooloose/nerdcommenter'
+
+Plug 'kien/ctrlp.vim'
+
+call plug#end()
+
+" Unite {{{
+   " General options
+   let g:unite_enable_start_insert = 1
+   let g:unite_data_directory = expand("~/.vim/unite")
+   let g:unite_source_history_yank_enable = 1
+
+   "call unite#custom#profile('default', 'context', {
+         "\ 'winheight': 10,
+         "\ 'direction': 'botright',
+         "\ 'prompt': '» ',
+         "\ })
+
+   "" Ignore build directories
+   "call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\/build')
+   call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\/_build')
+   call unite#custom#source('grep', 'ignore_pattern', '\/_build')
+   "call unite#custom#source('grep', 'ignore_pattern', '\/build')
+
+   " File
+   let g:unite_source_file_ignore_pattern =
+         \'tmp\|^\%(/\|\a\+:/\)$\|\~$\|\.\%(o|exe|dll|bak|sw[po]\)$'
+
+   " Search
+   let g:unite_source_grep_max_candidates=1000
+   let g:unite_source_find_max_candidates=1000
+
+   " silver_searcher
+   if executable('ag')
+     let g:unite_source_grep_command = 'ag'
+     let g:unite_source_grep_default_opts = '-f --line-numbers --nocolor --nogroup -i ' .
+           \ '--hidden --ignore ".hg" --ignore ".svn" --ignore ".git" ' .
+           \ '--ignore "bzr" --ignore ".svg"  '
+     let g:unite_source_grep_recursive_opt = ''
+   endif
+
+" Unite {{{
+nnoremap [unite] <Nop>
+nmap ' <SID>[unite]
+
+nnoremap <SID>[unite]u :<C-u>Unite
+nnoremap <SID>[unite]' :<C-u>Unite buffer file<CR>
+nnoremap <SID>[unite]b :<C-u>Unite buffer<CR>
+nnoremap <SID>[unite]f :<C-u>Unite file<CR>
+nnoremap <SID>[unite]F :<C-u>Unite file_rec<CR>
+"nnoremap <SID>[unite]H :<C-u>Unite help<CR>
+"nnoremap <SID>[unite]t :<C-u>Unite tag<CR>
+"nnoremap <SID>[unite]T :<C-u>Unite -immediately -no-start-insert tag:<C-r>=expand('<cword>')<CR><CR>
+nnoremap <SID>[unite]w :<C-u>Unite tab<CR>
+"nnoremap <SID>[unite]m :<C-u>Unite file_mru<CR>
+nnoremap <SID>[unite]o :<C-u>Unite outline<CR>
+nnoremap <SID>[unite]q :<C-u>Unite qf -no-quit<CR>
+"nnoremap <SID>[unite]M :<C-u>Unite mark<CR>
+nnoremap <SID>[unite]r :<C-u>Unite register<CR>
+nnoremap <SID>[unite]g :<C-u>Unite grep -no-quit -direction=botright -buffer-name=grep-buffer<CR>
+
+" Grep-like search
+nnoremap <Leader>/  :Unite grep -no-quit<CR><CR>
+nnoremap <Leader>// :Unite grep -no-quit<CR>
+vnoremap <Leader>/  y:Unite grep -no-quit<CR><CR><C-R>=escape(@", '\\.*$^[]')<CR><CR>
+
+" File search, CtrlP style
+nnoremap <C-p> :<C-u>Unite -buffer-name=files -start-insert -default-action=open file_rec/async:!<CR>
+nnoremap <C-p>p :<C-u>Unite -buffer-name=files -start-insert -default-action=open file_rec/async:
+"" }}}oremap <space>s :Unite -quick-match buffer<cr>
+""
+" SuperTab {{{
 let g:SuperTabDefaultCompletionType = '<Tab>'
 let g:SuperTabBackward = '<C-S-Tab>'
+" }}}
 
 " UltiSnips {{{
 " Trigger configuration.
@@ -149,20 +169,13 @@ augroup end
 "let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
 " }}}
 
-" DoxygenToolkit.vim : Simplify Doxygen documentation in C, C++, Python. 
-Plug 'vim-scripts/DoxygenToolkit.vim'
-let g:DoxygenToolkit_commentType = "C++"
-
-Plug 'scrooloose/nerdcommenter'
-
-Plug 'kien/ctrlp.vim'
+" CtrlP {{{
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-
-call plug#end()
+" }}}
 
 " System clipboard support
 if has('clipboard')
@@ -240,6 +253,10 @@ set incsearch
 " Turns on search highlighting
 set hlsearch
 
+" enable persistant undo history
+set undofile
+" set a directory to store the undo history
+set undodir=~/.vimundo/
 
 "Store swap files in fixed location, not current directory.
 set dir=~/.dotfiles/.vimswap//,/var/tmp//,/tmp//,.
@@ -264,6 +281,17 @@ set complete-=i
 set complete-=t
 " When the popup menu is opened, make the Enter key select the completion
 " entry instead of creating a new line
+set cursorline " Highlight current line
+
+" System clipboard support
+if has('clipboard')
+  if has('unnamedplus') " When possible use + register for copy-paste
+    set clipboard=unnamed,unnamedplus
+  else " On mac and Windows, use * register for copy-paste
+    set clipboard=unnamed
+  endif
+endif
+
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Disable Ex mode
 nnoremap Q <nop>

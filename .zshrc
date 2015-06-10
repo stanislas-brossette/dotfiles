@@ -56,7 +56,7 @@ setopt autocd
 if [ -f /etc/zsh_command_not_found ]; then
     . /etc/zsh_command_not_found
 fi
-
+bindkey -s '^l' clear; echo -e "\033c\e[3J"
 export CDPATH="$CDPATH:$ps"
 
 setopt no_share_history
