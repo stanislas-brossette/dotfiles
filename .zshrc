@@ -30,8 +30,9 @@ alias m='make -j7'
 alias srcfuerte='source /opt/ros/fuerte/setup.zsh'
 alias srcgroovy='source /opt/ros/groovy/setup.zsh'
 alias srchydro='source /opt/ros/hydro/setup.zsh'
-
+alias valgr='valgrind --tool=memcheck --track-origins=yes --show-reachable=yes --error-limit=no'
 alias cleanTmp="find -name '*~' -exec echo mv \{\} /tmp \;"
+alias clang-format=clang-format-3.6
 
 export ALTERNATE_EDITOR="" # Should start emacs --daemon if emacsclient runs without one.
 alias e='emacsclient -t'

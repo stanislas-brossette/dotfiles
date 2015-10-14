@@ -28,6 +28,9 @@
 	spull = svn rebase
 	spush = svn dcommit
 	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+	co = checkout
+	pom = push origin master
+	pod = push origin dev
 [user]
 	name = stanislas-brossette
 	email = stanislas.brossette@gmail.com
@@ -42,4 +45,4 @@
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
 [credential]
-	helper = cache --timeout=7200
+	helper = cache --timeout=36000

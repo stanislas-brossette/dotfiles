@@ -24,6 +24,9 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Enhanced syntax highlighting for C++
 Plug 'octol/vim-cpp-enhanced-highlight'
 
+" Enhanced syntax highlighting for C++
+Plug 'tpope/vim-fugitive'
+
 " Using git URL
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
@@ -79,39 +82,39 @@ Plug 'kien/ctrlp.vim'
 call plug#end()
 
 " Unite {{{
-   " General options
-   let g:unite_enable_start_insert = 1
-   let g:unite_data_directory = expand("~/.vim/unite")
-   let g:unite_source_history_yank_enable = 1
+" General options
+let g:unite_enable_start_insert = 1
+let g:unite_data_directory = expand("~/.vim/unite")
+let g:unite_source_history_yank_enable = 1
 
-   "call unite#custom#profile('default', 'context', {
-         "\ 'winheight': 10,
-         "\ 'direction': 'botright',
-         "\ 'prompt': '» ',
-         "\ })
+"call unite#custom#profile('default', 'context', {
+"\ 'winheight': 10,
+"\ 'direction': 'botright',
+"\ 'prompt': '» ',
+"\ })
 
-   "" Ignore build directories
-   "call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\/build')
-   call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\/_build')
-   call unite#custom#source('grep', 'ignore_pattern', '\/_build')
-   "call unite#custom#source('grep', 'ignore_pattern', '\/build')
+"" Ignore build directories
+"call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\/build')
+call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\/_build')
+call unite#custom#source('grep', 'ignore_pattern', '\/_build')
+"call unite#custom#source('grep', 'ignore_pattern', '\/build')
 
-   " File
-   let g:unite_source_file_ignore_pattern =
-         \'tmp\|^\%(/\|\a\+:/\)$\|\~$\|\.\%(o|exe|dll|bak|sw[po]\)$'
+" File
+let g:unite_source_file_ignore_pattern =
+      \'_build\|tmp\|^\%(/\|\a\+:/\)$\|\~$\|\.\%(o|exe|dll|bak|sw[po]\)$'
 
-   " Search
-   let g:unite_source_grep_max_candidates=1000
-   let g:unite_source_find_max_candidates=1000
+" Search
+let g:unite_source_grep_max_candidates=1000
+let g:unite_source_find_max_candidates=1000
 
-   " silver_searcher
-   if executable('ag')
-     let g:unite_source_grep_command = 'ag'
-     let g:unite_source_grep_default_opts = '-f --line-numbers --nocolor --nogroup -i ' .
-           \ '--hidden --ignore ".hg" --ignore ".svn" --ignore ".git" ' .
-           \ '--ignore "bzr" --ignore ".svg"  '
-     let g:unite_source_grep_recursive_opt = ''
-   endif
+" silver_searcher
+if executable('/usr/bin/ag')
+  let g:unite_source_grep_command = '/usr/bin/ag'
+  let g:unite_source_grep_default_opts = '-f --line-numbers --nocolor --nogroup -i ' .
+        \ '--hidden --ignore ".hg" --ignore ".svn" --ignore ".git" ' .
+        \ '--ignore "bzr" --ignore ".svg"  '
+  let g:unite_source_grep_recursive_opt = ''
+endif
 
 " Unite {{{
 nnoremap [unite] <Nop>
@@ -162,136 +165,151 @@ let g:UltiSnipsSnippetDirectories=['custom_snippets', 'UltiSnips']
 "let g:UltiSnipsSnippetDirectories=["custom_snippets"]
 " Prevent UltiSnips from stealing ctrl-k.
 augroup VimStartup
-autocmd!
-autocmd VimEnter * sil! iunmap <c-k>
-augroup end
-" Use ctrl-b instead.
-"let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
-" }}}
+  autocmd!
+  autocmd VimEnter * sil! iunmap <c-k>
+  augroup end
+    " Use ctrl-b instead.
+    "let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
+    " }}}
 
-" CtrlP {{{
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-" }}}
+    " CtrlP {{{
+    let g:ctrlp_map = '<c-p>'
+    let g:ctrlp_cmd = 'CtrlP'
+    let g:ctrlp_working_path_mode = 'ra'
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+    let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+    " }}}
 
-" System clipboard support
-if has('clipboard')
- "if has('unnamedplus') " When possible use + register for copy-paste
-   "set clipboard=unnamed,unnamedplus
- "else " On mac and Windows, use * register for copy-paste
-   "set clipboard=unnamed
- "endif
-endif
+    " System clipboard support
+    if has('clipboard')
+      "if has('unnamedplus') " When possible use + register for copy-paste
+      "set clipboard=unnamed,unnamedplus
+      "else " On mac and Windows, use * register for copy-paste
+      "set clipboard=unnamed
+      "endif
+    endif
 
-" set UTF-8 encoding
-set enc=utf-8
-set fenc=utf-8
-set termencoding=utf-8
-" use indentation of previous line
-set autoindent
-" use intelligent indentation for C
-set smartindent
-" configure tabwidth and insert spaces instead of tabs
-set tabstop=2        " tab width is 2 spaces
-set shiftwidth=2     " indent also with 2 spaces
-set expandtab        " expand tabs to spaces
-" wrap lines at 120 chars. 80 is somewaht antiquated with nowadays displays.
-set textwidth=80
-" turn syntax highlighting on
-set t_Co=256
-syntax on
-"color"
-let g:hybrid_use_Xresources = 1
-colorscheme hybrid
-" turn line numbers on
-" set number
-" highlight matching braces
-set showmatch
-" intelligent comments
-set comments=sl:/*,mb:\ *,elx:\ */
-" Affiche la position du curseur 'ligne,colonne'
-set ruler
-" Affiche une barre de status en bas de l'écran
-set laststatus=2
-" Contenu de la barre de status
-set statusline=%<%f%h%m%r%=%l,%c\ %P
-" Autorise le passage d'une ligne à l'autre avec les flèches gauche et droite
-set whichwrap=<,>,[,]
+    " set UTF-8 encoding
+    set enc=utf-8
+    set fenc=utf-8
+    set termencoding=utf-8
+    " use indentation of previous line
+    set autoindent
+    " use intelligent indentation for C
+    set smartindent
+    " configure tabwidth and insert spaces instead of tabs
+    set tabstop=2        " tab width is 2 spaces
+    set shiftwidth=2     " indent also with 2 spaces
+    set expandtab        " expand tabs to spaces
+    " wrap lines at 120 chars. 80 is somewaht antiquated with nowadays displays.
+    "set textwidth=80
+    " this turns off physical line wrapping (ie: automatic insertion of newlines)
+    set textwidth=0 wrapmargin=0
+    set wrap linebreak nolist
 
-" Allow mouse use
-set mouse=a
+    " turn syntax highlighting on
+    set t_Co=256
+    syntax on
+    "color"
+    let g:hybrid_use_Xresources = 1
+    colorscheme hybrid
+    " turn line numbers on
+    " set number
+    " highlight matching braces
+    set showmatch
+    " intelligent comments
+    set comments=sl:/*,mb:\ *,elx:\ */
+    " Affiche la position du curseur 'ligne,colonne'
+    set ruler
+    " Affiche une barre de status en bas de l'écran
+    set laststatus=2
+    " Contenu de la barre de status
+    set statusline=%<%f%h%m%r%=%l,%c\ %P
+    " Autorise le passage d'une ligne à l'autre avec les flèches gauche et droite
+    set whichwrap=<,>,[,]
+
+    " Allow mouse use
+    set mouse=a
 
 
-" Press F3 to toggle highlighting on/off, and show current value.
-noremap <F3> :set hlsearch! hlsearch?<CR>
-" switch between header/source with F4
-map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
-" in normal mode F5 will save the file
-nmap <F5> :w<CR>
-" in insert mode F5 will exit insert, save, enters insert again
-imap <F5> <ESC>:w<CR>i
-" F3: Toggle list (display unprintable characters).
-map <F6> :so ~/.dotfiles/.vimrc<CR>
-nnoremap <F9> :set list!<CR>
-" Press F10 to toggle set number on/off, and show current value.
-noremap <F10> :set number! number?<CR>
+    " Press F3 to toggle highlighting on/off, and show current value.
+    noremap <F3> :set hlsearch! hlsearch?<CR>
+    " switch between header/source with F4
+    map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+    " in normal mode F5 will save the file
+    nmap <F5> :w<CR>
+    " in insert mode F5 will exit insert, save, enters insert again
+    imap <F5> <ESC>:w<CR>i
+    " F3: Toggle list (display unprintable characters).
+    map <F6> :so ~/.dotfiles/.vimrc<CR>
 
-" Command history length
-set history=1000
-" Always keep a visible line above cursor
-set scrolloff=1
-" Affiche les commandes dans la barre de status
-set showcmd
+    "F7 reindents a whole file"
+    map <F7> mzgg=G`z
 
-" Les recherches ne sont pas 'case sensitives'
-set ignorecase
-" Searching starts after you enter the string
-set incsearch
-" Turns on search highlighting
-set hlsearch
+    nnoremap <F9> :set list!<CR>
+    " Press F8 to toggle set number on/off, and show current value.
+    noremap <F8> :set number! number?<CR>
 
-" enable persistant undo history
-set undofile
-" set a directory to store the undo history
-set undodir=~/.vimundo/
+    " Command history length
+    set history=1000
+    " Always keep a visible line above cursor
+    set scrolloff=1
+    " Affiche les commandes dans la barre de status
+    set showcmd
 
-"Store swap files in fixed location, not current directory.
-set dir=~/.dotfiles/.vimswap//,/var/tmp//,/tmp//,.
+    " Les recherches ne sont pas 'case sensitives'
+    set ignorecase
+    " Searching starts after you enter the string
+    set incsearch
+    " Turns on search highlighting
+    set hlsearch
 
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
-"set list "displays all invisible characters"
+    " enable persistant undo history
+    set undofile
+    " set a directory to store the undo history
+    set undodir=~/.vimundo/
 
-"Filetype detection for indent and highlighting
-filetype plugin indent on
+    "Store swap files in fixed location, not current directory.
+    set dir=~/.dotfiles/.vimswap//,/var/tmp//,/tmp//,.
 
-"Map NERDTree on current dir to <F12>
-map <F12> :NERDTreeToggle<CR>
+    set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+    "set list "displays all invisible characters"
 
-" vimrc de Ben
-set wildmenu " Show list instead of just completing
-set wildmode=list:longest,full " Command <Tab> completion, list matches, then longest common part, then all.
-set completeopt+=menuone
-set completeopt-=preview
-" Default Vim completion should not look for all include files (slow)
-set complete-=i
-" Default Vim completion should not look for all tags (slow)
-set complete-=t
-" When the popup menu is opened, make the Enter key select the completion
-" entry instead of creating a new line
-set cursorline " Highlight current line
+    "Filetype detection for indent and highlighting
+    filetype plugin indent on
 
-" System clipboard support
-if has('clipboard')
-  if has('unnamedplus') " When possible use + register for copy-paste
-    set clipboard=unnamed,unnamedplus
-  else " On mac and Windows, use * register for copy-paste
-    set clipboard=unnamed
-  endif
-endif
+    "Map NERDTree on current dir to <F12>
+    map <F12> :NERDTreeToggle<CR>
 
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" Disable Ex mode
-nnoremap Q <nop>
+    " vimrc de Ben
+    set wildmenu " Show list instead of just completing
+    set wildmode=list:longest,full " Command <Tab> completion, list matches, then longest common part, then all.
+    set completeopt+=menuone
+    set completeopt-=preview
+    " Default Vim completion should not look for all include files (slow)
+    set complete-=i
+    " Default Vim completion should not look for all tags (slow)
+    set complete-=t
+    " When the popup menu is opened, make the Enter key select the completion
+    " entry instead of creating a new line
+    set cursorline " Highlight current line
+    " Limit syntax highlighting with 
+    set synmaxcol=200
+    "Fast terminal
+    set ttyfast
+
+    " System clipboard support
+    if has('clipboard')
+      if has('unnamedplus') " When possible use + register for copy-paste
+        set clipboard=unnamed,unnamedplus
+      else " On mac and Windows, use * register for copy-paste
+        set clipboard=unnamed
+      endif
+    endif
+
+    inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    " Disable Ex mode
+    nnoremap Q <nop>
+
+    map <C-K> :pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<cr>
+    imap <C-K> <c-o>:pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<cr>

@@ -1,8 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/stanislas/.dotfiles/gitignore'
-let g:netrw_dirhist_2='/home/stanislas/profiles/default-x86_64-linux-ubuntu-13.04/src/pgsolver/include/pgsolver/solver'
-let g:netrw_dirhist_3='/tmp/roboptim-shared-tests/pgsolver_d/schittkowski/problem-14'
-let g:netrw_dirhist_4='/home/stanislas/profiles/default-x86_64-linux-ubuntu-13.04/src/pgsolver'
-let g:netrw_dirhist_5='/home/stanislas/.dotfiles/.vim/plugged/vim-snippets'
-let g:netrw_dirhist_6='/home/stanislas/.dotfiles/.i3'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/stanislas/profiles/default-x86_64-linux-ubuntu-13.04/src/manifolds/include/manifolds'
+let g:netrw_dirhist_2='/home/stanislas/profiles/default-x86_64-linux-ubuntu-13.04/src/roboptim/roboptim-core-manifold'
+let g:netrw_dirhist_3='/home/stanislas/.dotfiles/i3'
+let g:netrw_dirhist_4='/home/stanislas/.dotfiles'
+let g:netrw_dirhist_5='/home/stanislas/.dotfiles/.vim'

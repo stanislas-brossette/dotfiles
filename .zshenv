@@ -28,6 +28,8 @@ export EDITOR='vim'
 export MAIL="/var/mail/$USER"
 export CVS_RSH=ssh
 
+alias gitk="gitk --all"
+
 test -x /usr/lib/ccache/gcc && export CC=/usr/lib/ccache/gcc
 test -x /usr/lib/ccache/g++ && export CXX=/usr/lib/ccache/g++
 
