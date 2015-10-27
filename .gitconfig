@@ -31,6 +31,7 @@
 	co = checkout
 	pom = push origin master
 	pod = push origin dev
+	po = push origin
 [user]
 	name = stanislas-brossette
 	email = stanislas.brossette@gmail.com
