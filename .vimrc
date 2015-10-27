@@ -85,6 +85,7 @@ Plug 'kien/ctrlp.vim'
 call plug#end()
 
 source ~/.dotfiles/vimConfigs/unite
+source ~/.dotfiles/vimConfigs/ctrlP
 source ~/.dotfiles/vimConfigs/superTab
 source ~/.dotfiles/vimConfigs/ultiSnips
 source ~/.dotfiles/vimConfigs/switch
