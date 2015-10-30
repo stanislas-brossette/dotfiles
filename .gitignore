@@ -164,3 +164,7 @@ build
 
 # oh-my-zsh folder
 oh-my-zsh/
+
+# tmux resurect files
+tmux/resurrect/tmux*
+

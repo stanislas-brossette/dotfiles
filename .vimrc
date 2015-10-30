@@ -30,6 +30,9 @@ Plug 'tpope/vim-fugitive'
 " A simple Vim plugin to switch segments of text with predefined replacements
 Plug 'AndrewRadev/switch.vim'
 
+" obsession.vim: continuously updated session files http://www.vim.org/scripts/script.php?script_id=4472
+Plug 'tpope/vim-obsession'
+
 " Using git URL
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
@@ -151,6 +154,8 @@ nmap <F5> :w<CR>
 " in insert mode F5 will exit insert, save, enters insert again
 imap <F5> <ESC>:w<CR>i
 " F3: Toggle list (display unprintable characters).
+
+" Reload vimrc
 map <F6> :so ~/.dotfiles/.vimrc<CR>
 
 "F7 reindents a whole file"
@@ -215,6 +220,12 @@ if has('clipboard')
   else " On mac and Windows, use * register for copy-paste
     set clipboard=unnamed
   endif
+endif
+
+" Fix mouse in vim under tmux
+if &term =~ '^screen'
+  " tmux knows the extended mouse mode
+  set ttymouse=xterm2
 endif
 
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
