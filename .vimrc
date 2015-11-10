@@ -163,7 +163,7 @@ map <F7> mzgg=G`z
 
 nnoremap <F9> :set list!<CR>
 " Press F8 to toggle set number on/off, and show current value.
-noremap <F8> :set number! number?<CR>
+noremap <F8> :set number! relativenumber! number?<CR>
 
 " Command history length
 set history=1000
