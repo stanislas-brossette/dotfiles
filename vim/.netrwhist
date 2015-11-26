@@ -1,4 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/home/stanislas/profiles/default-x86_64-linux-ubuntu-13.04/src/problem-generator/_build/_build_clang_Debug/logFiles/clang/ALL/V0'
-let g:netrw_dirhist_2='/home/stanislas/.dotfiles/.vim/plugged/ultisnips/custom_snippets'

@@ -33,6 +33,9 @@ Plug 'AndrewRadev/switch.vim'
 " obsession.vim: continuously updated session files http://www.vim.org/scripts/script.php?script_id=4472
 Plug 'tpope/vim-obsession'
 
+" A modern vim plugin for editing LaTeX files.
+Plug 'lervag/vimtex'
+
 " Using git URL
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
@@ -92,6 +95,7 @@ source ~/.dotfiles/vimConfigs/ctrlP.vim
 source ~/.dotfiles/vimConfigs/superTab.vim
 source ~/.dotfiles/vimConfigs/ultiSnips.vim
 source ~/.dotfiles/vimConfigs/switch.vim
+source ~/.dotfiles/vimConfigs/vimtex.vim
 
 " System clipboard support
 if has('clipboard')
@@ -156,7 +160,7 @@ imap <F5> <ESC>:w<CR>i
 " F3: Toggle list (display unprintable characters).
 
 " Reload vimrc
-map <F6> :so ~/.dotfiles/.vimrc<CR>
+map <F6> :so ~/.vimrc<CR>
 
 "F7 reindents a whole file"
 map <F7> mzgg=G`z
@@ -184,8 +188,8 @@ set undofile
 " set a directory to store the undo history
 set undodir=~/.vimundo/
 
-"Store swap files in fixed location, not current directory.
-set dir=~/.dotfiles/.vimswap//,/var/tmp//,/tmp//,.
+""Store swap files in fixed location, not current directory.
+"set dir=~/.dotfiles/.vimswap//,/var/tmp//,/tmp//,.
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 "set list "displays all invisible characters"
@@ -212,6 +216,10 @@ set cursorline " Highlight current line
 set synmaxcol=200
 "Fast terminal
 set ttyfast
+
+
+"No auto fold on startup
+set foldlevelstart=99
 
 " System clipboard support
 if has('clipboard')

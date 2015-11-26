@@ -36,3 +36,10 @@ test -x /usr/lib/ccache/g++ && export CXX=/usr/lib/ccache/g++
 export KEYCHAIN_KEYS="$HOME/.ssh/id_rsa_idh"
 
 PROFILE="default-x86_64-linux-ubuntu-13.04"
+
+# qpdfview synctex vim synchronization
+# for qpdfview
+#vim --servername LATEX --remote-silent +%2<Enter> %1
+
+# for alias in .bashrc
+alias vimtex='vim --servername LATEX'
