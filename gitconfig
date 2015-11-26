@@ -1,5 +1,5 @@
 [core]
-	excludesfile = ~/.dotfiles/.gitignore
+	excludesfile = ~/.gitignore
 	legacyheaders = false # >git 1.5
 	quotepath = false
 # http://stackoverflow.com/questions/136178/git-diff-handling-long-lines
