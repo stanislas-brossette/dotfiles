@@ -22,17 +22,20 @@ alias mv='nocorrect mv'       # no spelling correction on mv
 alias cp='nocorrect cp'       # no spelling correction on cp
 alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
 alias e=emacs
-alias v=vim
+alias v=nvim
 alias gy=geany
 alias qt=qtcreator
 alias m=make
 alias m='make -j7'
+alias src='source'
 alias srcfuerte='source /opt/ros/fuerte/setup.zsh'
 alias srcgroovy='source /opt/ros/groovy/setup.zsh'
 alias srchydro='source /opt/ros/hydro/setup.zsh'
+alias reload='source ~/.zshrc'
 alias valgr='valgrind --tool=memcheck --track-origins=yes --show-reachable=yes --leak-check=yes --error-limit=no'
 alias cleanTmp="find -name '*~' -exec echo mv \{\} /tmp \;"
 alias clang-format=clang-format-3.6
+alias tmux="TERM=screen-256color-bce tmux"
 
 export ALTERNATE_EDITOR="" # Should start emacs --daemon if emacsclient runs without one.
 alias e='emacsclient -t'
@@ -57,7 +60,13 @@ setopt autocd
 if [ -f /etc/zsh_command_not_found ]; then
     . /etc/zsh_command_not_found
 fi
+
+# bing ctrl+L to clear screen
 bindkey -s '^l' clear; echo -e "\033c\e[3J"
+
+#bind Caps Lock to escape
+xcape -e '#66=Escape'
+
 export CDPATH="$CDPATH:$ps"
 
 setopt no_share_history

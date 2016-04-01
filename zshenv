@@ -43,3 +43,4 @@ PROFILE="default-x86_64-linux-ubuntu-13.04"
 
 # for alias in .bashrc
 alias vimtex='vim --servername LATEX'
+alias nvimtex='nvim --servername LATEX'

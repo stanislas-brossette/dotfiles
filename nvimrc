@@ -36,6 +36,8 @@ Plug 'tpope/vim-obsession'
 " A modern vim plugin for editing LaTeX files.
 Plug 'lervag/vimtex'
 
+Plug 'benekastah/neomake'
+
 " Using git URL
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
@@ -96,6 +98,7 @@ source ~/.dotfiles/vimConfigs/superTab.vim
 source ~/.dotfiles/vimConfigs/ultiSnips.vim
 source ~/.dotfiles/vimConfigs/switch.vim
 source ~/.dotfiles/vimConfigs/vimtex.vim
+source ~/.dotfiles/vimConfigs/neomake.vim
 
 " System clipboard support
 if has('clipboard')
@@ -251,3 +254,4 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
