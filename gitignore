@@ -172,6 +172,7 @@ tmux/resurrect/last
 
 # ignore plugged submodules
 vim/plugged
+vim/spell
 
 # file containing history
 vim/.netrwhist
