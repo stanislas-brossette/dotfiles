@@ -13,11 +13,17 @@ let maplocalleader = ';'
 " http://www.vim.org/scripts/script.php?script_id=3396
 Plug 'Shougo/unite.vim'
 
+" Interactive command execution in Vim
+Plug 'Shougo/vimproc.vim', { 'do': 'make'}
+
 " A modern vim plugin for editing LaTeX files.
 Plug 'lervag/vimtex'
 
 " A tree explorer plugin for vim.
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" Vim plugin for intensely orgasmic commenting
+Plug 'scrooloose/nerdcommenter'
 
 " Enhanced syntax highlighting for C++
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -39,14 +45,27 @@ Plug 'honza/vim-snippets'
 " DoxygenToolkit.vim : Simplify Doxygen documentation in C, C++, Python. 
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
-call plug#end()
+"A plugin for automatically restoring file's cursor position and folding
+"http://www.vim.org/scripts/script.php?script_id=4021"
+"Plug 'vim-scripts/restore_view.vim'
 
+" File type plugin for folding TeX files http://www.vim.org/scripts/script.php?script_id=4702
+Plug 'matze/vim-tex-fold'
+
+call plug#end()
 source ~/.dotfiles/vimConfigs/unite.vim
 source ~/.dotfiles/vimConfigs/ultiSnips.vim
 source ~/.dotfiles/vimConfigs/vimtex.vim
 source ~/.dotfiles/vimConfigs/neomake.vim
 source ~/.dotfiles/vimConfigs/doxygenToolkit.vim
 
+let g:tex_fold_override_foldtext = 1
+
+" Don't screw up folds when inserting text that might affect them, until
+" leaving insert mode. Foldmethod is local to the window. Protect against
+" screwing up folding when switching between windows.
+"autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
+"autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 
 """""""""""""""""""
 "  BASIC OPTIONS  "
@@ -115,7 +134,8 @@ set dir=~/.dotfiles/.vimswap//,/var/tmp//,/tmp//,.
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 "No auto fold on startup
-set foldlevelstart=99
+"set foldlevelstart=99
+set foldmethod=manual
 
 " System clipboard support
 if has('clipboard')
@@ -124,12 +144,6 @@ if has('clipboard')
   else " On mac and Windows, use * register for copy-paste
     set clipboard=unnamed
   endif
-endif
-
-" Fix mouse in vim under tmux
-if &term =~ '^screen'
-  " tmux knows the extended mouse mode
-  set ttymouse=xterm2
 endif
 
 " Disable Ex mode

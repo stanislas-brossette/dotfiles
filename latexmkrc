@@ -1,5 +1,5 @@
 # For synctex
-$pdflatex = 'pdflatex -synctex=1 %O %S';
+$pdflatex = 'pdflatex -interactive=nonstopmode -synctex=1 %O %S';
 
 $pdf_previewer = "start qpdfview --unique";
 
