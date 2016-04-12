@@ -52,20 +52,16 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 " File type plugin for folding TeX files http://www.vim.org/scripts/script.php?script_id=4702
 Plug 'matze/vim-tex-fold'
 
+" Maintains a history of previous yanks, changes and deletes http://www.vim.org/scripts/script.php?script_id=1234
+Plug 'vim-scripts/YankRing.vim'
+
 call plug#end()
 source ~/.dotfiles/vimConfigs/unite.vim
 source ~/.dotfiles/vimConfigs/ultiSnips.vim
 source ~/.dotfiles/vimConfigs/vimtex.vim
 source ~/.dotfiles/vimConfigs/neomake.vim
 source ~/.dotfiles/vimConfigs/doxygenToolkit.vim
-
-let g:tex_fold_override_foldtext = 1
-
-" Don't screw up folds when inserting text that might affect them, until
-" leaving insert mode. Foldmethod is local to the window. Protect against
-" screwing up folding when switching between windows.
-"autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
-"autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+source ~/.dotfiles/vimConfigs/texfold.vim
 
 """""""""""""""""""
 "  BASIC OPTIONS  "
@@ -135,7 +131,7 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 "No auto fold on startup
 "set foldlevelstart=99
-set foldmethod=manual
+set foldmethod=marker
 
 " System clipboard support
 if has('clipboard')
@@ -163,13 +159,16 @@ nmap <F5> :w<CR>
 " in insert mode F5 will exit insert, save, enters insert again
 imap <F5> <ESC>:w<CR>i
 " Reload vimrc
-map <F6> :so ~/.vimrc<CR>
+map <F6> :so ~/.nvimrc<CR>
 " Press F8 to toggle set number on/off, and show current value.
 noremap <F8> :set number! relativenumber! number?<CR>
 " Display trailing characters
 nnoremap <F9> :set list!<CR>
 "Map NERDTree on current dir to <F12>
 map <F12> :NERDTreeToggle<CR>
+
+" Toggle Yank Ring history
+nnoremap <silent> <C-T> :YRShow<CR>
 
 map <C-K> :pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<cr>
 imap <C-K> <c-o>:pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<cr>
