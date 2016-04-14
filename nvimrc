@@ -55,6 +55,9 @@ Plug 'matze/vim-tex-fold'
 " Maintains a history of previous yanks, changes and deletes http://www.vim.org/scripts/script.php?script_id=1234
 Plug 'vim-scripts/YankRing.vim'
 
+"A code-completion engine for Vim http://valloric.github.io/YouCompleteMe/
+Plug 'Valloric/YouCompleteMe'
+
 call plug#end()
 source ~/.dotfiles/vimConfigs/unite.vim
 source ~/.dotfiles/vimConfigs/ultiSnips.vim
