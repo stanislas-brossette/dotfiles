@@ -71,3 +71,6 @@ export CDPATH="$CDPATH:$ps"
 
 setopt no_share_history
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Init Tmuxifier
+eval "$(tmuxifier init -)"
