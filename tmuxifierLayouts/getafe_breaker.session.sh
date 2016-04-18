@@ -4,17 +4,17 @@
 
 # Create session with specified name if it does not already exist. If no
 # argument is given, session name will be based on layout file name.
-if initialize_session "catmullclarkraycast"; then
+if initialize_session "getafe_breaker_planning"; then
 
   # Create a new window inline within session layout definition.
   new_window "nvim"
-  run_cmd "cd \$ps/catmullclarkraycast"
+  run_cmd "cd \$ps/PGScenarios/getafe_breaker_planning"
   new_window "Debug"
-  run_cmd "cd \$ps/catmullclarkraycast/_build/_build_clang_Debug"
+  run_cmd "cd \$ps/PGScenarios/getafe_breaker_planning/_build/_build_clang_Debug"
   new_window "Release"
-  run_cmd "cd \$ps/catmullclarkraycast/_build/_build_clang_Release"
+  run_cmd "cd \$ps/PGScenarios/getafe_breaker_planning/_build/_build_clang_Release"
   new_window "root"
-  run_cmd "cd \$ps/catmullclarkraycast"
+  run_cmd "cd \$ps/PGScenarios/getafe_breaker_planning"
   new_window "B&I"
   run_cmd "cd \$ps/build_and_install"
 

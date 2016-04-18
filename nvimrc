@@ -58,6 +58,12 @@ Plug 'vim-scripts/YankRing.vim'
 "A code-completion engine for Vim http://valloric.github.io/YouCompleteMe/
 Plug 'Valloric/YouCompleteMe'
 
+"A light and configurable statusline/tabline for Vim http://www.vim.org/scripts/script.php?script_id=5294
+Plug 'itchyny/lightline.vim'
+
+"A dark color scheme for Vim & gVim
+"Plug 'w0ng/vim-hybrid'
+
 call plug#end()
 source ~/.dotfiles/vimConfigs/unite.vim
 source ~/.dotfiles/vimConfigs/ultiSnips.vim
@@ -151,9 +157,31 @@ nnoremap Q <nop>
 "Filetype detection for indent and highlighting
 filetype plugin indent on
 
+"""""""""""""""
+"  FUNCTIONS  "
+"""""""""""""""
+
+" Zoom / Restore window.
+function! s:ZoomToggle() abort
+  if exists('t:zoomed') && t:zoomed
+    execute t:zoom_winrestcmd
+    let t:zoomed = 0
+  else
+    let t:zoom_winrestcmd = winrestcmd()
+    resize
+    vertical resize
+    let t:zoomed = 1
+  endif
+endfunction
+command! ZoomToggle call s:ZoomToggle()
+
+
 """"""""""""""
 "  MAPPINGS  "
 """"""""""""""
+
+" Easy zooming
+nnoremap <silent> <Leader><Leader> :ZoomToggle<CR>
 
 " Press F3 to toggle highlighting on/off, and show current value.
 noremap <F3> :set hlsearch! hlsearch?<CR>
