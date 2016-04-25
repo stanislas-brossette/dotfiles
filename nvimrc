@@ -6,12 +6,25 @@
 call plug#begin('~/.vim/plugged')
 
 " set leader keys
-let mapleader = ','
-let maplocalleader = ';'
+let mapleader = "\<Space>"
+let maplocalleader = ','
 
 " Unite and create user interfaces 
 " http://www.vim.org/scripts/script.php?script_id=3396
 Plug 'Shougo/unite.vim'
+
+"Dark powered asynchronous completion framework for neovim
+function! DoRemote(arg)
+ "UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+let g:deoplete#enable_at_startup = 1
+
+"A code-completion engine for Vim http://valloric.github.io/YouCompleteMe/
+"Plug 'Valloric/YouCompleteMe'
+
+"Perform the replacement in quickfix.
+Plug 'thinca/vim-qfreplace'
 
 " Interactive command execution in Vim
 Plug 'Shougo/vimproc.vim', { 'do': 'make'}
@@ -50,16 +63,19 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 "Plug 'vim-scripts/restore_view.vim'
 
 " File type plugin for folding TeX files http://www.vim.org/scripts/script.php?script_id=4702
-Plug 'matze/vim-tex-fold'
+"Plug 'matze/vim-tex-fold'
 
 " Maintains a history of previous yanks, changes and deletes http://www.vim.org/scripts/script.php?script_id=1234
-Plug 'vim-scripts/YankRing.vim'
-
-"A code-completion engine for Vim http://valloric.github.io/YouCompleteMe/
-Plug 'Valloric/YouCompleteMe'
+"Plug 'vim-scripts/YankRing.vim'
 
 "A light and configurable statusline/tabline for Vim http://www.vim.org/scripts/script.php?script_id=5294
-Plug 'itchyny/lightline.vim'
+"Plug 'itchyny/lightline.vim'
+
+"lean & mean status/tabline for vim that's light as air
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'powerline/powerline'
+Plug 'powerline/fonts'
 
 "A dark color scheme for Vim & gVim
 "Plug 'w0ng/vim-hybrid'
@@ -70,7 +86,9 @@ source ~/.dotfiles/vimConfigs/ultiSnips.vim
 source ~/.dotfiles/vimConfigs/vimtex.vim
 source ~/.dotfiles/vimConfigs/neomake.vim
 source ~/.dotfiles/vimConfigs/doxygenToolkit.vim
-source ~/.dotfiles/vimConfigs/texfold.vim
+"source ~/.dotfiles/vimConfigs/texfold.vim
+source ~/.dotfiles/vimConfigs/vim_cpp_enhanced_highlight.vim
+source ~/.dotfiles/vimConfigs/airline.vim
 
 """""""""""""""""""
 "  BASIC OPTIONS  "
@@ -80,6 +98,7 @@ source ~/.dotfiles/vimConfigs/texfold.vim
 set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
+set encoding=utf-8
 
 " configure tabwidth and insert spaces instead of tabs
 set tabstop=2        " tab width is 2 spaces
@@ -103,7 +122,10 @@ let g:hybrid_use_Xresources = 1
 colorscheme hybrid
 
 " Affiche la position du curseur 'ligne,colonne'
-set ruler
+"set ruler
+
+" Highlight current line
+"set cursorline
 
 " Affiche une barre de status en bas de l'écran
 set laststatus=2
@@ -142,13 +164,16 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 "set foldlevelstart=99
 set foldmethod=marker
 
+" No swap files
+set noswapfile
+
 " System clipboard support
 if has('clipboard')
-  if has('unnamedplus') " When possible use + register for copy-paste
-    set clipboard=unnamed,unnamedplus
-  else " On mac and Windows, use * register for copy-paste
-    set clipboard=unnamed
-  endif
+ "if has('unnamedplus') " When possible use + register for copy-paste
+   "set clipboard=unnamed,unnamedplus
+ "else " On mac and Windows, use * register for copy-paste
+   "set clipboard=unnamed
+ "endif
 endif
 
 " Disable Ex mode
@@ -163,15 +188,15 @@ filetype plugin indent on
 
 " Zoom / Restore window.
 function! s:ZoomToggle() abort
-  if exists('t:zoomed') && t:zoomed
-    execute t:zoom_winrestcmd
-    let t:zoomed = 0
-  else
-    let t:zoom_winrestcmd = winrestcmd()
-    resize
-    vertical resize
-    let t:zoomed = 1
-  endif
+ "if exists('t:zoomed') && t:zoomed
+   "execute t:zoom_winrestcmd
+   "let t:zoomed = 0
+ "else
+   "let t:zoom_winrestcmd = winrestcmd()
+   "resize
+   "vertical resize
+   "let t:zoomed = 1
+ "endif
 endfunction
 command! ZoomToggle call s:ZoomToggle()
 

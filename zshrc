@@ -35,7 +35,10 @@ alias reload='source ~/.zshrc'
 alias valgr='valgrind --tool=memcheck --track-origins=yes --show-reachable=yes --leak-check=yes --error-limit=no'
 alias cleanTmp="find -name '*~' -exec echo mv \{\} /tmp \;"
 alias clang-format=clang-format-3.6
-alias tmux="TERM=screen-256color-bce tmux"
+
+# set terminal to 256 colors
+TERM=xterm-256color
+#alias tmux="tmux
 
 export ALTERNATE_EDITOR="" # Should start emacs --daemon if emacsclient runs without one.
 alias e='emacsclient -t'
@@ -73,4 +76,5 @@ setopt no_share_history
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Init Tmuxifier
+export TMUXIFIER_TMUX_OPTS="-2"
 eval "$(tmuxifier init -)"
