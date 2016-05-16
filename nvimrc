@@ -35,6 +35,9 @@ Plug 'lervag/vimtex'
 " A tree explorer plugin for vim.
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
+" Syntax checking hacks for vim
+"Plug 'scrooloose/syntastic'
+
 " Vim plugin for intensely orgasmic commenting
 Plug 'scrooloose/nerdcommenter'
 
@@ -47,6 +50,9 @@ Plug 'tpope/vim-fugitive'
 
 "A plugin for asynchronous :make using Neovim's job-control functionality
 Plug 'benekastah/neomake'
+
+"Proselint plugin for Vim
+Plug 'amperser/proselint'
 
 " UltiSnips - The ultimate snippet solution for Vim. Send pull
 " requests to SirVer/ultisnips!_.
@@ -169,11 +175,11 @@ set noswapfile
 
 " System clipboard support
 if has('clipboard')
- "if has('unnamedplus') " When possible use + register for copy-paste
-   "set clipboard=unnamed,unnamedplus
- "else " On mac and Windows, use * register for copy-paste
-   "set clipboard=unnamed
- "endif
+ if has('unnamedplus') " When possible use + register for copy-paste
+   set clipboard=unnamed,unnamedplus
+ else " On mac and Windows, use * register for copy-paste
+   set clipboard=unnamed
+ endif
 endif
 
 " Disable Ex mode
@@ -188,15 +194,15 @@ filetype plugin indent on
 
 " Zoom / Restore window.
 function! s:ZoomToggle() abort
- "if exists('t:zoomed') && t:zoomed
-   "execute t:zoom_winrestcmd
-   "let t:zoomed = 0
- "else
-   "let t:zoom_winrestcmd = winrestcmd()
-   "resize
-   "vertical resize
-   "let t:zoomed = 1
- "endif
+ if exists('t:zoomed') && t:zoomed
+   execute t:zoom_winrestcmd
+   let t:zoomed = 0
+ else
+   let t:zoom_winrestcmd = winrestcmd()
+   resize
+   vertical resize
+   let t:zoomed = 1
+ endif
 endfunction
 command! ZoomToggle call s:ZoomToggle()
 

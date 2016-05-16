@@ -1,4 +1,4 @@
-" Unite {{{
+" Unite
 " General options
 let g:unite_enable_start_insert = 1
 let g:unite_data_directory = expand("~/.vim/unite")
@@ -61,5 +61,5 @@ vnoremap <Leader>/  y:Unite grep -no-quit<CR><CR><C-R>=escape(@", '\\.*$^[]')<CR
 " File search, CtrlP style
 nnoremap <C-p> :<C-u>Unite -buffer-name=files -start-insert -default-action=open file_rec/async:!<CR>
 nnoremap <C-p>p :<C-u>Unite -buffer-name=files -start-insert -default-action=open file_rec/async:
-"" }}}oremap <space>s :Unite -quick-match buffer<cr>
+"" oremap <space>s :Unite -quick-match buffer<cr>
 

@@ -24,11 +24,9 @@ export AIST_USERNAME='s00402'
 export MAIL=$HOME/Mail
 
 # Tools
-export EDITOR='vim'
+export EDITOR='nvim'
 export MAIL="/var/mail/$USER"
 export CVS_RSH=ssh
-
-alias gitk="gitk --all"
 
 test -x /usr/lib/ccache/gcc && export CC=/usr/lib/ccache/gcc
 test -x /usr/lib/ccache/g++ && export CXX=/usr/lib/ccache/g++
@@ -37,10 +35,3 @@ export KEYCHAIN_KEYS="$HOME/.ssh/id_rsa_idh"
 
 PROFILE="default-x86_64-linux-ubuntu-13.04"
 
-# qpdfview synctex vim synchronization
-# for qpdfview
-#vim --servername LATEX --remote-silent +%2<Enter> %1
-
-# for alias in .bashrc
-alias vimtex='vim --servername LATEX'
-alias nvimtex="NVIM_LISTEN_ADDRESS=/tmp/nvim_tex.sock nvim"

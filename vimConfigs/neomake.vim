@@ -1,5 +1,5 @@
 
-"neomake {{{
+"neomake
     let g:neomake_error_sign = {
           \ 'text': '>>',
           \ 'texthl': 'ErrorMsg',
@@ -21,4 +21,4 @@
 
     " Run make
     nmap <Leader>b :Neomake!<CR>
-  " }}}
+  "

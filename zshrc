@@ -16,7 +16,8 @@ ZSH_CUSTOM=$HOME/.dotfiles/oh-my-zsh-custom
 # time that oh-my-zsh is loaded.
 ZSH_THEME="junkfood"
 
-# My aliases
+# aliases
+alias gitk="gitk --all"
 alias make='nocorrect make'
 alias mv='nocorrect mv'       # no spelling correction on mv
 alias cp='nocorrect cp'       # no spelling correction on cp
@@ -36,11 +37,17 @@ alias valgr='valgrind --tool=memcheck --track-origins=yes --show-reachable=yes -
 alias cleanTmp="find -name '*~' -exec echo mv \{\} /tmp \;"
 alias clang-format=clang-format-3.6
 
+# qpdfview synctex vim synchronization
+# for qpdfview
+#vim --servername LATEX --remote-silent +%2<Enter> %1
+alias vimtex='vim --servername LATEX'
+alias nvimtex="NVIM_LISTEN_ADDRESS=/tmp/nvim_tex.sock nvim"
+
 # set terminal to 256 colors
 TERM=xterm-256color
 #alias tmux="tmux
 
-export ALTERNATE_EDITOR="" # Should start emacs --daemon if emacsclient runs without one.
+export ALTERNATE_EDITOR="vim" # Should start emacs --daemon if emacsclient runs without one.
 alias e='emacsclient -t'
 alias ec='emacsclient -c'
 
