@@ -127,6 +127,9 @@ syntax on
 let g:hybrid_use_Xresources = 1
 colorscheme hybrid
 
+" Recognize .tex files as LaTeX
+let g:tex_flavor='latex'
+
 " Affiche la position du curseur 'ligne,colonne'
 "set ruler
 
@@ -139,7 +142,7 @@ set laststatus=2
 " Contenu de la barre de status
 set statusline=%<%f%h%m%r%=%l,%c\ %P
 " Autorise le passage d'une ligne à l'autre avec les flèches gauche et droite
-set whichwrap=<,>,[,]
+set whichwrap=<,>,h,l,[,]
 
 " Command history length
 set history=1000
@@ -160,7 +163,7 @@ set undofile
 " set a directory to store the undo history
 set undodir=~/.vimundo/
 
-""Store swap files in fixed location, not current directory.
+"Store swap files in fixed location, not current directory.
 set dir=~/.dotfiles/.vimswap//,/var/tmp//,/tmp//,.
 
 "set list displays all invisible characters

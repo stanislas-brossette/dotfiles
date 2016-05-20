@@ -2,6 +2,10 @@ snippet node
 \node (${1:name}) [${2:type}, ${3:below of}=${4:name}] {${5:text}};
 endsnippet
 
+snippet nodetab
+\node (${1:name}) [${2:type}, ${3:below of}=${4:name}] {\begin{tabular}{c}${5:text}\end{tabular}};
+endsnippet
+
 snippet arrow
 \draw [arrow] (${1:name1}) ${2:--} (${3:name2});
 endsnippet
