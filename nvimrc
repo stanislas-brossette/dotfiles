@@ -9,7 +9,7 @@ call plug#begin('~/.vim/plugged')
 let mapleader = "\<Space>"
 let maplocalleader = ','
 
-" Unite and create user interfaces 
+" Unite and create user interfaces
 " http://www.vim.org/scripts/script.php?script_id=3396
 Plug 'Shougo/unite.vim'
 
@@ -61,7 +61,7 @@ Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 
-" DoxygenToolkit.vim : Simplify Doxygen documentation in C, C++, Python. 
+" DoxygenToolkit.vim : Simplify Doxygen documentation in C, C++, Python.
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
 "A plugin for automatically restoring file's cursor position and folding
@@ -232,9 +232,7 @@ nnoremap <F9> :set list!<CR>
 "Map NERDTree on current dir to <F12>
 map <F12> :NERDTreeToggle<CR>
 
-" Toggle Yank Ring history
-nnoremap <silent> <C-T> :YRShow<CR>
-
+" Map Ctrl+k to clang-format in normal mode
 map <C-K> :pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<cr>
 imap <C-K> <c-o>:pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<cr>
 
@@ -246,5 +244,11 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
+" Disable the arrow keys in normal mode
+map <up> :echoerr "Stop being stupid!!!"<CR>
+map <down> :echoerr "Stop being stupid!!!"<CR>
+map <left> :echoerr "Stop being stupid!!!"<CR>
+map <right> :echoerr "Stop being stupid!!!"<CR>
 
 tnoremap <Esc><Esc> <C-\><C-n>
