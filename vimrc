@@ -10,7 +10,6 @@ let maplocalleader = ';'
 " Unite and create user interfaces 
 " http://www.vim.org/scripts/script.php?script_id=3396
 Plug 'Shougo/unite.vim'
-
 Plug 'thinca/vim-qfreplace'
 
 " Make sure you use single quotes

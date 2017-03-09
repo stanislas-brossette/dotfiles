@@ -24,6 +24,7 @@ alias cp='nocorrect cp'       # no spelling correction on cp
 alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
 alias e=emacs
 alias v=nvim
+alias p=python3
 alias gy=geany
 alias qt=qtcreator
 alias m=make

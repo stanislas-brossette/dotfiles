@@ -17,11 +17,11 @@ Plug 'Shougo/unite.vim'
 function! DoRemote(arg)
  "UpdateRemotePlugins
 endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-let g:deoplete#enable_at_startup = 1
+"Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+"let g:deoplete#enable_at_startup = 1
 
 "A code-completion engine for Vim http://valloric.github.io/YouCompleteMe/
-"Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 
 "Perform the replacement in quickfix.
 Plug 'thinca/vim-qfreplace'
@@ -246,9 +246,9 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
 " Disable the arrow keys in normal mode
-map <up> :echoerr "Stop being stupid!!!"<CR>
-map <down> :echoerr "Stop being stupid!!!"<CR>
-map <left> :echoerr "Stop being stupid!!!"<CR>
-map <right> :echoerr "Stop being stupid!!!"<CR>
+"map <up> :echoerr "Use hjkl instead of arrows!!!"<CR>
+"map <down> :echoerr "Use hjkl instead of arrows!!!"<CR>
+"map <left> :echoerr "Use hjkl instead of arrows!!!"<CR>
+"map <right> :echoerr "Use hjkl instead of arrows!!!"<CR>
 
 tnoremap <Esc><Esc> <C-\><C-n>
