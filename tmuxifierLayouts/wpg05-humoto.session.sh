@@ -9,8 +9,6 @@ if initialize_session "humoto-wpg05"; then
   # Create a new window inline within session layout definition.
   new_window "nvim"
   run_cmd "cd \$ps/humoto-module-wpg05"
-  new_window "build-all"
-  run_cmd "cd \$ps/humoto-module-wpg05/build-all"
   new_window "root"
   run_cmd "cd \$ps/humoto-module-wpg05"
 

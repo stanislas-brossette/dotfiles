@@ -33,7 +33,7 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make'}
 Plug 'lervag/vimtex'
 
 " A tree explorer plugin for vim.
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 
 " Syntax checking hacks for vim
 "Plug 'scrooloose/syntastic'
