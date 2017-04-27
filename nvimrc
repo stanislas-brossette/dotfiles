@@ -176,6 +176,10 @@ set foldmethod=marker
 " No swap files
 set noswapfile
 
+"Enable use of mouse cursor
+set mouse=a
+
+
 " System clipboard support
 if has('clipboard')
  if has('unnamedplus') " When possible use + register for copy-paste
