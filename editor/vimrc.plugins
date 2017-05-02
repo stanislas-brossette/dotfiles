@@ -1,0 +1,208 @@
+
+let g:nvim_dir = get(g:, "vim_dir", expand("~/.config/vim/"))
+let g:plugin_dir = get(g:, "plugin_dir", g:nvim_dir . "plugged/")
+
+"""""""""""""
+"  PLUGINS  "
+"""""""""""""
+silent! if plug#begin(g:plugin_dir)
+
+" Unite and create user interfaces 
+" http://www.vim.org/scripts/script.php?script_id=3396
+Plug 'Shougo/unite.vim'
+Plug 'thinca/vim-qfreplace'
+
+" Make sure you use single quotes
+" Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/vim-easy-align'
+
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+" Enhanced syntax highlighting for C++
+Plug 'octol/vim-cpp-enhanced-highlight'
+
+" Enhanced syntax highlighting for C++
+Plug 'tpope/vim-fugitive'
+
+" A simple Vim plugin to switch segments of text with predefined replacements
+Plug 'AndrewRadev/switch.vim'
+
+" obsession.vim: continuously updated session files http://www.vim.org/scripts/script.php?script_id=4472
+Plug 'tpope/vim-obsession'
+
+" A modern vim plugin for editing LaTeX files.
+Plug 'lervag/vimtex'
+
+" Using git URL
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+
+" Plugin options
+" Plug 'nsf/gocode', { 'tag': 'go.weekly.2012-03-13', 'rtp': 'vim' }
+
+" Plugin outside ~/.vim/plugged with post-update hook
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+
+" Unmanaged plugin (manually installed and updated)
+" Plug '~/my-prototype-plugin'
+
+"" NeoComplete
+"Plug 'Shougo/neocomplete.vim'
+"" Disable AutoComplPop.
+"let g:acp_enableAtStartup = 0
+"" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 0
+"let g:neocomplete#enable_refresh_always = 0
+"" Use neocomplete.
+"let g:neocomplete#enable_at_startup = 0
+"" Use smartcase.
+"let g:neocomplete#enable_smart_case = 1
+"let g:neocomplete#auto_completion_start_length = 3
+""let g:neocomplete#enable_prefetch = 1
+"let g:neocomplete#skip_auto_completion_time = "0.1"
+"" Set minimum syntax keyword length.
+"let g:neocomplete#sources#syntax#min_keyword_length = 4
+""let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+"let g:neocomplete#use_vimproc = 1
+"let g:neocomplete#enable_omni_fallback = 0
+"inoremap <expr><Tab> pumvisible() ? \<Tab>" : neocomplete#start_manual_complete()
+" VimProc
+Plug 'Shougo/vimproc.vim', { 'do': 'make'}
+
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+
+" SuperTab
+Plug 'ervandew/supertab'
+
+" DoxygenToolkit.vim : Simplify Doxygen documentation in C, C++, Python. 
+Plug 'vim-scripts/DoxygenToolkit.vim'
+let g:DoxygenToolkit_commentType = "C++"
+
+Plug 'scrooloose/nerdcommenter'
+
+Plug 'kien/ctrlp.vim'
+
+call plug#end()
+endif
+
+" Unite
+" General options
+let g:unite_enable_start_insert = 1
+let g:unite_data_directory = expand("~/.vim/unite")
+let g:unite_source_history_yank_enable = 1
+
+"call unite#custom#profile('default', 'context', {
+"\ 'winheight': 10,
+"\ 'direction': 'botright',
+"\ 'prompt': '» ',
+"\ })
+
+"" Ignore build directories
+"call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\/build')
+call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\/_build')
+call unite#custom#source('grep', 'ignore_pattern', '\/_build')
+"call unite#custom#source('grep', 'ignore_pattern', '\/build')
+
+" File
+let g:unite_source_file_ignore_pattern =
+      \'_build\|tmp\|^\%(/\|\a\+:/\)$\|\~$\|\.\%(o|exe|dll|bak|sw[po]\)$'
+
+" Search
+let g:unite_source_grep_max_candidates=1000
+let g:unite_source_find_max_candidates=1000
+
+" silver_searcher
+if executable('/usr/bin/ag')
+  let g:unite_source_grep_command = '/usr/bin/ag'
+  let g:unite_source_grep_default_opts = '-f --line-numbers --nocolor --nogroup -i ' .
+        \ '--hidden --ignore ".hg" --ignore ".svn" --ignore ".git" ' .
+        \ '--ignore "bzr" --ignore ".svg"  '
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
+" Unite 
+nnoremap [unite] <Nop>
+nmap ' <SID>[unite]
+
+nnoremap <SID>[unite]u :<C-u>Unite
+nnoremap <SID>[unite]' :<C-u>Unite buffer file<CR>
+nnoremap <SID>[unite]b :<C-u>Unite buffer<CR>
+nnoremap <SID>[unite]f :<C-u>Unite file<CR>
+nnoremap <SID>[unite]F :<C-u>Unite file_rec<CR>
+"nnoremap <SID>[unite]H :<C-u>Unite help<CR>
+"nnoremap <SID>[unite]t :<C-u>Unite tag<CR>
+"nnoremap <SID>[unite]T :<C-u>Unite -immediately -no-start-insert tag:<C-r>=expand('<cword>')<CR><CR>
+nnoremap <SID>[unite]w :<C-u>Unite tab<CR>
+"nnoremap <SID>[unite]m :<C-u>Unite file_mru<CR>
+nnoremap <SID>[unite]o :<C-u>Unite outline<CR>
+nnoremap <SID>[unite]q :<C-u>Unite qf -no-quit<CR>
+"nnoremap <SID>[unite]M :<C-u>Unite mark<CR>
+nnoremap <SID>[unite]r :<C-u>Unite register<CR>
+nnoremap <SID>[unite]g :<C-u>Unite grep -no-quit -direction=botright -buffer-name=grep-buffer<CR>
+
+" Grep-like search
+nnoremap <Leader>/  :Unite grep -no-quit<CR><CR>
+nnoremap <Leader>// :Unite grep -no-quit<CR>
+vnoremap <Leader>/  y:Unite grep -no-quit<CR><CR><C-R>=escape(@", '\\.*$^[]')<CR><CR>
+
+" File search, CtrlP style
+nnoremap <C-p> :<C-u>Unite -buffer-name=files -start-insert -default-action=open file_rec/async:!<CR>
+nnoremap <C-p>p :<C-u>Unite -buffer-name=files -start-insert -default-action=open file_rec/async:
+"" oremap <space>s :Unite -quick-match buffer<cr>
+
+" CtrlP 
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+" }}}
+
+" SuperTab 
+let g:SuperTabDefaultCompletionType = '<Tab>'
+let g:SuperTabBackward = '<C-S-Tab>'
+
+" UltiSnips
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-Tab>"
+"let g:UltiSnipsListSnippets="<s-Space>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+" Custom snippets
+"let g:UltiSnipsSnippetsDir='~/.dotfiles/custom_snippets'
+"let g:UltiSnipsSnippetDirectories=['custom_snippets', 'UltiSnips']
+"let g:UltiSnipsSnippetDirectories=["custom_snippets"]
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "/home/stanislas/.dotfiles/custom_snippets"]
+" Prevent UltiSnips from stealing ctrl-k.
+augroup VimStartup
+  autocmd!
+  autocmd VimEnter * sil! iunmap <c-k>
+  augroup end
+    " Use ctrl-b instead.
+    "let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
+"
+
+" vimtex
+let g:vimtex_latexmk_build_dir = './build'
+let g:vimtex_latexmk_progname = 'nvr'
+"let g:vimtex_view_method = 'zathura'
+let g:vimtex_view_general_viewer = 'qpdfview'
+let g:vimtex_view_general_options = '--unique @pdf\#src:@tex:@line:@col'
+let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_complete_enabled = 1
+
+" Disable the options that slow down nvim
+let g:vimtex_motion_matchparen = 0
+let g:vimtex_indent_enabled = 0
+
+" Remap double click for latex
+autocmd FileType tex nnoremap <silent> <2-LeftMouse> :VimtexView<CR>
+"
+

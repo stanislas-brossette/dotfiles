@@ -1,0 +1,126 @@
+let g:nvim_dir = get(g:, "nvim_dir", expand("~/.config/nvim/"))
+let g:plugin_dir = get(g:, "plugin_dir", g:nvim_dir . "plugged/")
+
+"""""""""""""
+"  PLUGINS  "
+"""""""""""""
+silent! if plug#begin(g:plugin_dir)
+
+" Unite and create user interfaces
+" http://www.vim.org/scripts/script.php?script_id=3396
+Plug 'Shougo/unite.vim'
+
+"A code-completion engine for Vim http://valloric.github.io/YouCompleteMe/
+Plug 'Valloric/YouCompleteMe'
+
+" A tree explorer plugin for vim.
+Plug 'scrooloose/nerdtree'
+
+" UltiSnips - The ultimate snippet solution for Vim. Send pull
+" requests to SirVer/ultisnips!_.
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+
+"lean & mean status/tabline for vim that's light as air
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'powerline/powerline'
+Plug 'powerline/fonts'
+
+Plug 'bchretien/vim-hybrid'
+
+call plug#end()
+endif
+
+
+"""""""""""""
+"  ultiSnips    "
+"""""""""""""
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-Tab>"
+"let g:UltiSnipsListSnippets="<s-Space>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+" Custom snippets
+"let g:UltiSnipsSnippetsDir='~/.dotfiles/custom_snippets'
+"let g:UltiSnipsSnippetDirectories=['custom_snippets', 'UltiSnips']
+"let g:UltiSnipsSnippetDirectories=["custom_snippets"]
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "/home/stanislas/.dotfiles/editor/custom_snippets"]
+" Prevent UltiSnips from stealing ctrl-k.
+augroup VimStartup
+  autocmd!
+  autocmd VimEnter * sil! iunmap <c-k>
+  augroup end
+    " Use ctrl-b instead.
+    "let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
+
+"""""""""""""
+"  unite    "
+"""""""""""""
+" General options
+let g:unite_enable_start_insert = 1
+let g:unite_data_directory = expand("~/.vim/unite")
+let g:unite_source_history_yank_enable = 1
+
+"call unite#custom#profile('default', 'context', {
+"\ 'winheight': 10,
+"\ 'direction': 'botright',
+"\ 'prompt': '» ',
+"\ })
+
+"" Ignore build directories
+"call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\/build')
+call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\/_build')
+call unite#custom#source('grep', 'ignore_pattern', '\/_build')
+"call unite#custom#source('grep', 'ignore_pattern', '\/build')
+
+" File
+let g:unite_source_file_ignore_pattern =
+      \'_build\|tmp\|^\%(/\|\a\+:/\)$\|\~$\|\.\%(o|exe|dll|bak|sw[po]\)$'
+
+" Search
+let g:unite_source_grep_max_candidates=1000
+let g:unite_source_find_max_candidates=1000
+
+" silver_searcher
+if executable('/usr/bin/ag')
+  let g:unite_source_grep_command = '/usr/bin/ag'
+  let g:unite_source_grep_default_opts = '-f --line-numbers --nocolor --nogroup -i ' .
+        \ '--hidden --ignore ".hg" --ignore ".svn" --ignore ".git" ' .
+        \ '--ignore "bzr" --ignore ".svg"  '
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
+nnoremap [unite] <Nop>
+nmap ' <SID>[unite]
+
+nnoremap <SID>[unite]u :<C-u>Unite
+nnoremap <SID>[unite]' :<C-u>Unite buffer file<CR>
+nnoremap <SID>[unite]b :<C-u>Unite buffer<CR>
+nnoremap <SID>[unite]f :<C-u>Unite file<CR>
+nnoremap <SID>[unite]F :<C-u>Unite file_rec<CR>
+"nnoremap <SID>[unite]H :<C-u>Unite help<CR>
+"nnoremap <SID>[unite]t :<C-u>Unite tag<CR>
+"nnoremap <SID>[unite]T :<C-u>Unite -immediately -no-start-insert tag:<C-r>=expand('<cword>')<CR><CR>
+nnoremap <SID>[unite]w :<C-u>Unite tab<CR>
+"nnoremap <SID>[unite]m :<C-u>Unite file_mru<CR>
+nnoremap <SID>[unite]o :<C-u>Unite outline<CR>
+nnoremap <SID>[unite]q :<C-u>Unite qf -no-quit<CR>
+"nnoremap <SID>[unite]M :<C-u>Unite mark<CR>
+nnoremap <SID>[unite]r :<C-u>Unite register<CR>
+nnoremap <SID>[unite]g :<C-u>Unite grep -no-quit -direction=botright -buffer-name=grep-buffer<CR>
+
+" Grep-like search
+nnoremap <Leader>/  :Unite grep -no-quit<CR><CR>
+nnoremap <Leader>// :Unite grep -no-quit<CR>
+vnoremap <Leader>/  y:Unite grep -no-quit<CR><CR><C-R>=escape(@", '\\.*$^[]')<CR><CR>
+
+" File search, CtrlP style
+nnoremap <C-p> :<C-u>Unite -buffer-name=files -start-insert -default-action=open file_rec/async:!<CR>
+nnoremap <C-p>p :<C-u>Unite -buffer-name=files -start-insert -default-action=open file_rec/async:
+"" oremap <space>s :Unite -quick-match buffer<cr>
+

@@ -1,0 +1,49 @@
+[core]
+	excludesfile = ~/.gitignore
+	legacyheaders = false # >git 1.5
+	quotepath = false
+# http://stackoverflow.com/questions/136178/git-diff-handling-long-lines
+  pager = less -r
+# if ↑ doesn’t work, try: pager = less -+$LESS -FRX
+[color]
+	ui = auto
+	interactive = auto
+[repack]
+	usedeltabaseoffset = true # >git 1.5
+[alias]
+	s = status
+	a = !git add . && git status
+	au = !git add -u . && git status
+	aa = !git add . && git add -u . && git status
+	c = commit
+	cm = commit -m
+	ca = commit --amend # careful
+	ac = !git add $1 && git commit
+	acm = !sh git add $1 && git commit -m $2
+	l = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+	ll = log --stat --abbrev-commit
+	d = diff --color-words
+	dh = diff --color-words head
+	master = checkout master
+	spull = svn rebase
+	spush = svn dcommit
+	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+	co = checkout
+	pom = push origin master
+	pod = push origin dev
+	po = push origin
+[user]
+	name = stanislas-brossette
+	email = stanislas.brossette@gmail.com
+[github]
+	user = stanislas-brossette
+[diff]
+# git does copy/rename *detection*. if you want it to track copies/renames:
+# http://stackoverflow.com/questions/1043388/record-file-copy-operation-with-git
+# renames = copies
+
+[apply]
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
+[credential]
+	helper = cache --timeout=36000

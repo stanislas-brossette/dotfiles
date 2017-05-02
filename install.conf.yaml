@@ -1,0 +1,74 @@
+#######################################################################
+#                               Aliases                               #
+#######################################################################
+
+- aliases:
+    # Install vim plugins
+    - &vim_plugins
+      command: vim -Nu ~/.vimrc.plugins +PlugInstall
+      stdin: true
+      stdout: true
+      stderr: true
+
+    # Install neovim plugins
+    - &nvim_plugins
+      command: nvim -u ~/.config/nvim/plugins.vim +PlugInstall
+      stdin: true
+      stdout: true
+      stderr: true
+
+#######################################################################
+#                               Install                               #
+#######################################################################
+
+- clean: ['~', '~/.config', '~/.vim', '~/.vim/autoload',
+          '~/.config/nvim', '~/.config/nvim/autoload']
+
+- shell:
+    - git submodule update --init --recursive
+
+- link:
+    ~/.dotfiles: ''
+    # dev
+    ~/.gitconfig: dev/gitconfig
+    #~/.gitconfig.local: dev/gitconfig.local
+    ~/.latexmkrc: dev/latexmkrc
+    #~/.valgrindrc: dev/valgrindrc
+
+    # neovim
+    ~/.vim: editor/vim
+    ~/.config/nvim/init.vim: editor/nvimrc
+    ~/.config/nvim/plugins.vim: editor/nvimrc.plugins
+    ~/.local/share/nvim/autoload/plug.vim:
+      create: true
+      path: editor/vim/autoload/plug.vim
+    ~/.config/nvim/custom_snippets:
+      create: true
+      path: editor/custom_snippets/
+    ~/.ycm_extra_conf.py: editor/ycm_extra_conf.py
+
+    # vim
+    ~/.vim: editor/vim
+    ~/.vimrc: editor/vimrc
+    ~/.vimrc.plugins: editor/vimrc.plugins
+
+    # gui
+    ~/.i3: gui/i3/
+
+    # term
+    ~/.tmux.conf: term/tmux.conf
+    ~/.tmux: term/tmux/
+    ~/.tmuxifierLayouts: term/tmuxifierLayouts/
+
+    # zsh
+    ~/.zshrc: term/zsh/zshrc
+    #~/.zshrc.local: term/zsh/zshrc.local
+    ~/.zshenv: term/zsh/zshenv
+    #~/.zshenv.local: term/zsh/zshenv.local
+    ~/.zprofile: term/zsh/zprofile
+    #~/.zprofile.local: term/zsh/zprofile.local
+
+- shell:
+    - mkdir -p ~/.ssh 2> /dev/null
+    - *vim_plugins
+    - *nvim_plugins
