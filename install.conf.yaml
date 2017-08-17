@@ -32,11 +32,11 @@
     # dev
     ~/.gitconfig: dev/gitconfig
     #~/.gitconfig.local: dev/gitconfig.local
-    ~/.latexmkrc: dev/latexmkrc
+    #~/.latexmkrc: dev/latexmkrc
     #~/.valgrindrc: dev/valgrindrc
 
     # neovim
-    ~/.vim: editor/vim
+    ~/.nvimrc: editor/nvimrc
     ~/.config/nvim/init.vim: editor/nvimrc
     ~/.config/nvim/plugins.vim: editor/nvimrc.plugins
     ~/.local/share/nvim/autoload/plug.vim:
@@ -48,17 +48,17 @@
     ~/.ycm_extra_conf.py: editor/ycm_extra_conf.py
 
     # vim
-    ~/.vim: editor/vim
-    ~/.vimrc: editor/vimrc
-    ~/.vimrc.plugins: editor/vimrc.plugins
+    #~/.vim: editor/vim
+    #~/.vimrc: editor/vimrc
+    #~/.vimrc.plugins: editor/vimrc.plugins
 
     # gui
-    ~/.i3: gui/i3/
+    # ~/.i3: gui/i3/
 
     # term
-    ~/.tmux.conf: term/tmux.conf
-    ~/.tmux: term/tmux/
-    ~/.tmuxifierLayouts: term/tmuxifierLayouts/
+    #~/.tmux.conf: term/tmux.conf
+    #~/.tmux: term/tmux/
+    #~/.tmuxifierLayouts: term/tmuxifierLayouts/
 
     # zsh
     ~/.zshrc: term/zsh/zshrc
@@ -70,5 +70,5 @@
 
 - shell:
     - mkdir -p ~/.ssh 2> /dev/null
-    - *vim_plugins
+    #- *vim_plugins
     - *nvim_plugins

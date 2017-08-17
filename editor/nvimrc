@@ -101,7 +101,7 @@ set undofile
 set undodir=~/.vimundo/
 
 "Store swap files in fixed location, not current directory.
-set dir=~/.dotfiles/.vimswap//,/var/tmp//,/tmp//,.
+set dir=~/dotfiles/.vimswap//,/var/tmp//,/tmp//,.
 
 "set list displays all invisible characters
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<

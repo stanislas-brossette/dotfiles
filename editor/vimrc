@@ -44,8 +44,8 @@ set wrap linebreak nolist
 set t_Co=256
 syntax on
 "color"
-let g:hybrid_use_Xresources = 1
-colorscheme hybrid
+"let g:hybrid_use_Xresources = 1
+"colorscheme hybrid
 " turn line numbers on
 " set number
 " highlight matching braces

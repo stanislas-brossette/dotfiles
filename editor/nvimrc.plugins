@@ -11,7 +11,7 @@ silent! if plug#begin(g:plugin_dir)
 Plug 'Shougo/unite.vim'
 
 "A code-completion engine for Vim http://valloric.github.io/YouCompleteMe/
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
 
 " A tree explorer plugin for vim.
 Plug 'scrooloose/nerdtree'
@@ -46,10 +46,10 @@ let g:UltiSnipsJumpBackwardTrigger="<s-Tab>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 " Custom snippets
-"let g:UltiSnipsSnippetsDir='~/.dotfiles/custom_snippets'
+"let g:UltiSnipsSnippetsDir='~/dotfiles/custom_snippets'
 "let g:UltiSnipsSnippetDirectories=['custom_snippets', 'UltiSnips']
 "let g:UltiSnipsSnippetDirectories=["custom_snippets"]
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "/home/stanislas/.dotfiles/editor/custom_snippets"]
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "/home/stanislas/dotfiles/editor/custom_snippets"]
 " Prevent UltiSnips from stealing ctrl-k.
 augroup VimStartup
   autocmd!

@@ -48,7 +48,7 @@ alias nvimtex="NVIM_LISTEN_ADDRESS=/tmp/nvim_tex.sock nvim"
 TERM=xterm-256color
 #alias tmux="tmux
 
-export ALTERNATE_EDITOR="vim" # Should start emacs --daemon if emacsclient runs without one.
+export ALTERNATE_EDITOR="vim"
 alias e='emacsclient -t'
 alias ec='emacsclient -c'
 
@@ -76,13 +76,13 @@ fi
 # bindkey -s '^l' clear; echo -e "\033c\e[3J"
 
 #bind Caps Lock to escape
-xcape -e '#66=Escape'
+#xcape -e '#66=Escape'
 
-export CDPATH="$CDPATH:$ps"
+#export CDPATH="$CDPATH:$ps"
 
-setopt no_share_history
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#setopt no_share_history
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Init Tmuxifier
-export TMUXIFIER_TMUX_OPTS="-2"
-eval "$(tmuxifier init -)"
+#export TMUXIFIER_TMUX_OPTS="-2"
+#eval "$(tmuxifier init -)"
