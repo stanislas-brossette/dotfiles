@@ -34,4 +34,4 @@ test -x /usr/lib/ccache/g++ && export CXX=/usr/lib/ccache/g++
 
 export KEYCHAIN_KEYS="$HOME/.ssh/id_rsa"
 
-#export PROFILE="default-x86_64-linux-ubuntu-16.04"
+export PROFILE="devel"

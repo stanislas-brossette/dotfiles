@@ -10,8 +10,11 @@ silent! if plug#begin(g:plugin_dir)
 " http://www.vim.org/scripts/script.php?script_id=3396
 Plug 'Shougo/unite.vim'
 
+" A completion framework for neovim
+Plug 'roxma/nvim-completion-manager'
+
 "A code-completion engine for Vim http://valloric.github.io/YouCompleteMe/
-Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
+"Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
 
 " A tree explorer plugin for vim.
 Plug 'scrooloose/nerdtree'
@@ -31,13 +34,26 @@ Plug 'powerline/fonts'
 
 Plug 'bchretien/vim-hybrid'
 
+Plug 'christoomey/vim-tmux-navigator'
+
+"Plug 'svermeulen/vim-easyclip'
+
+Plug 'rizzatti/dash.vim'
+
+"Plug 'rhysd/vim-clang-format'
+
+" DoxygenToolkit.vim : Simplify Doxygen documentation in C, C++, Python. 
+Plug 'vim-scripts/DoxygenToolkit.vim'
+
+Plug 'bfredl/nvim-miniyank'
+
 call plug#end()
 endif
 
 
-"""""""""""""
+"""""""""""""""""
 "  ultiSnips    "
-"""""""""""""
+"""""""""""""""""
 " Trigger configuration.
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
@@ -49,7 +65,7 @@ let g:UltiSnipsEditSplit="vertical"
 "let g:UltiSnipsSnippetsDir='~/dotfiles/custom_snippets'
 "let g:UltiSnipsSnippetDirectories=['custom_snippets', 'UltiSnips']
 "let g:UltiSnipsSnippetDirectories=["custom_snippets"]
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "/home/stanislas/dotfiles/editor/custom_snippets"]
+"let g:UltiSnipsSnippetDirectories=["UltiSnips", "/home/stanislas/dotfiles/editor/custom_snippets"]
 " Prevent UltiSnips from stealing ctrl-k.
 augroup VimStartup
   autocmd!
@@ -124,3 +140,44 @@ nnoremap <C-p> :<C-u>Unite -buffer-name=files -start-insert -default-action=open
 nnoremap <C-p>p :<C-u>Unite -buffer-name=files -start-insert -default-action=open file_rec/async:
 "" oremap <space>s :Unite -quick-match buffer<cr>
 
+"""""""""""""""""""""""""""""
+"  NVIM COMPLETION MANAGER  "
+"""""""""""""""""""""""""""""
+" for python completions
+let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'jedi')
+" language specific completions on markdown file
+let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'mistune')
+
+" utils, optional
+let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'psutil')
+let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'setproctitle')
+
+""""""""""""""""""
+"  VIM-EASYCLIP  "
+""""""""""""""""""
+"let g:EasyClipShareYanks = on
+
+"""""""""""""""""""""
+"  DOXYGEN TOOLKIT  "
+"""""""""""""""""""""
+let g:DoxygenToolkit_commentType = "C++"
+
+""""""""""""""
+"  MINIYANK  "
+""""""""""""""
+map p <Plug>(miniyank-autoput)
+map P <Plug>(miniyank-autoPut)
+
+""""""""""""""
+"  NERDTREE  "
+""""""""""""""
+"Map NERDTree on current dir to <F12>
+map <F12> :NERDTreeToggle<CR>
+
+""""""""""""""""""""""""
+"  HYBRID COLOR THEME  "
+""""""""""""""""""""""""
+" let g:hybrid_use_Xresources = 1
+colorscheme hybrid
+" Fix cursor in search for hybrid
+hi Cursor ctermfg=16 ctermbg=253

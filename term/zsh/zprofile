@@ -1,0 +1,71 @@
+# -*- shell-script -*-
+#
+# Named directories.
+p=/Users/brossettestanislas/profiles/devel
+pb=$p/build; pi=$p/install; ps=$p/src
+
+# Add prefix to PATH
+export PATH="$pi/bin:$PATH"
+export PATH="$pi/sbin:$PATH"
+
+# Eigen
+export EIGEN3_ROOT_DIR="$pi/include/eigen3"
+export EIGEN3_ROOT="$pi/include/eigen3"
+
+# Add tmuxifier to PATH
+#export PATH="$HOME/.tmuxifier/bin:$PATH"
+
+# ColorGcc
+#export CXX=colorgcc
+
+export CPATH="$pi/include:$CPATH"
+
+# Update LD_LIBRARY_PATH to find locally installed libraries.
+#export LD_LIBRARY_PATH="$pi/lib:$LD_LIBRARY_PATH"
+#export LD_LIBRARY_PATH="$pi/lib/roboptim-core:$LD_LIBRARY_PATH"
+#export LD_LIBRARY_PATH="$pi/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"
+
+# Look for locally installed man pages.
+#export MANPATH="$MANPATH:$pi/share/man"
+
+# Libtool (ltdl)
+#export LTDL_LIBRARY_PATH="$pi/lib/x86_64-linux-gnu/roboptim-core:$LTDL_LIBRARY_PATH"
+#export LTDL_LIBRARY_PATH="$pi/lib/roboptim-core:$LTDL_LIBRARY_PATH"
+
+# pkg-config
+export PKG_CONFIG_PATH="$pi/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="$pi/share/pkgconfig:$PKG_CONFIG_PATH"
+#export PKG_CONFIG_PATH="$pi/lib/x86_64-linux-gnu/pkgconfig:$PKG_CONFIG_PATH"
+
+
+# Python
+#export PYTHON_SITE_PACKAGES=$pi/lib/python2.7/site-packages
+#export PYTHON_DIST_PACKAGES=$pi/lib/python2.7/dist-packages
+#export PYTHONPATH=$pi/lib/python2.7/dist-packages:$PYTHONPATH
+#export PYTHONPATH=$pi/lib/python2.7/site-packages:$PYTHONPATH
+
+# Cython
+#export MC_CYTHON_PATH=$ps/multi_contact/mc_cython
+
+# make AddressSanitizer symbolize its output
+#export ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer-3.4
+
+# Ros
+#source /opt/ros/indigo/setup.zsh
+#source $ps/multi_contact/ros_workspace/devel/setup.zsh
+#source $ps/ros/hydro/setup.zsh
+
+# Anti-aliazing RViz
+#export VGL_SAMPLES=4
+
+# fzf
+#export FZF_DEFAULT_OPTS='--extended-exact'
+
+#if [ "$DESKTOP_SESSION" = "i3" ]; then
+#  export $(gnome-keyring-daemon -s)
+#fi
+
+#alias vrep=/home/stanislas/profiles/default-x86_64-linux-ubuntu-13.04/src/VREP/V-REP_PRO_EDU_V3_3_1_64_Linux/vrep.sh 
+#alias VREP=/home/stanislas/profiles/default-x86_64-linux-ubuntu-13.04/src/VREP/
+#export VREP_PATH="/home/stanislas/profiles/default-x86_64-linux-ubuntu-13.04/src/VREP/V-REP_PRO_EDU_V3_3_1_64_Linux/"
+

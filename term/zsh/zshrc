@@ -8,7 +8,7 @@
 
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
-export ZSH_CUSTOM=$HOME/.dotfiles/term/oh-my-zsh-custom
+export ZSH_CUSTOM=$HOME/dotfiles/term/oh-my-zsh-custom
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -36,7 +36,6 @@ alias srchydro='source /opt/ros/hydro/setup.zsh'
 alias reload='source ~/.zshrc'
 alias valgr='valgrind --tool=memcheck --track-origins=yes --show-reachable=yes --leak-check=yes --error-limit=no'
 alias cleanTmp="find -name '*~' -exec echo mv \{\} /tmp \;"
-alias clang-format=clang-format-3.6
 
 # qpdfview synctex vim synchronization
 # for qpdfview
@@ -86,3 +85,8 @@ fi
 # Init Tmuxifier
 #export TMUXIFIER_TMUX_OPTS="-2"
 #eval "$(tmuxifier init -)"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+#Enable shell integration
+source ~/.iterm2_shell_integration.`basename $SHELL`

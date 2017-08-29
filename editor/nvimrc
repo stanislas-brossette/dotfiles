@@ -58,11 +58,6 @@ set smartindent
 " turn syntax highlighting on
 set t_Co=256
 syntax on
-"color"
-" let g:hybrid_use_Xresources = 1
-colorscheme hybrid
-" Fix cursor in search for hybrid
-hi Cursor ctermfg=16 ctermbg=253
 
 " Recognize .tex files as LaTeX
 let g:tex_flavor='latex'
@@ -117,14 +112,16 @@ set noswapfile
 set mouse=a
 
 
+
 " System clipboard support
-if has('clipboard')
- if has('unnamedplus') " When possible use + register for copy-paste
-   set clipboard=unnamed,unnamedplus
- else " On mac and Windows, use * register for copy-paste
-   set clipboard=unnamed
- endif
-endif
+set clipboard=unnamed
+"if has('clipboard')
+" if has('unnamedplus') " When possible use + register for copy-paste
+"   set clipboard=unnamed,unnamedplus
+" else " On mac and Windows, use * register for copy-paste
+"   set clipboard=unnamed
+" endif
+"endif
 
 " Disable Ex mode
 nnoremap Q <nop>
@@ -170,12 +167,10 @@ map <F6> :so ~/.nvimrc<CR>
 noremap <F8> :set number! relativenumber! number?<CR>
 " Display trailing characters
 nnoremap <F9> :set list!<CR>
-"Map NERDTree on current dir to <F12>
-map <F12> :NERDTreeToggle<CR>
 
 " Map Ctrl+k to clang-format in normal mode
-map <C-K> :pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<cr>
-imap <C-K> <c-o>:pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<cr>
+map <C-K> :pyf /usr/local/Cellar/clang-format/2017-06-22/share/clang/clang-format.py<cr>
+imap <C-K> <c-o>:pyf /usr/local/Cellar/clang-format/2017-06-22/share/clang/clang-format.py<cr>
 
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j
