@@ -9,6 +9,10 @@ silent! if plug#begin(g:plugin_dir)
 " Unite and create user interfaces
 " http://www.vim.org/scripts/script.php?script_id=3396
 Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+
+" Perform the replacement in quickfix
+Plug 'thinca/vim-qfreplace'
 
 " A completion framework for neovim
 Plug 'roxma/nvim-completion-manager'
