@@ -69,7 +69,8 @@ let g:UltiSnipsEditSplit="vertical"
 "let g:UltiSnipsSnippetsDir='~/dotfiles/custom_snippets'
 "let g:UltiSnipsSnippetDirectories=['custom_snippets', 'UltiSnips']
 "let g:UltiSnipsSnippetDirectories=["custom_snippets"]
-"let g:UltiSnipsSnippetDirectories=["UltiSnips", "/home/stanislas/dotfiles/editor/custom_snippets"]
+set runtimepath+=~/dotfiles/editor/custom_snippets/
+"let g:UltiSnipsSnippetDirectories=['UltiSnips', '~/dotfiles/editor/custom_snippets']
 " Prevent UltiSnips from stealing ctrl-k.
 augroup VimStartup
   autocmd!
