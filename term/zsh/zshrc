@@ -86,7 +86,3 @@ fi
 #export TMUXIFIER_TMUX_OPTS="-2"
 #eval "$(tmuxifier init -)"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-#Enable shell integration
-source ~/.iterm2_shell_integration.`basename $SHELL`

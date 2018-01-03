@@ -169,8 +169,8 @@ noremap <F8> :set number! relativenumber! number?<CR>
 nnoremap <F9> :set list!<CR>
 
 " Map Ctrl+k to clang-format in normal mode
-map <C-K> :pyf /usr/local/Cellar/clang-format/2017-06-22/share/clang/clang-format.py<cr>
-imap <C-K> <c-o>:pyf /usr/local/Cellar/clang-format/2017-06-22/share/clang/clang-format.py<cr>
+map <C-K> :pyf /usr/share/clang/clang-format-3.9/clang-format.py<cr>
+imap <C-K> <c-o>:pyf /usr/share/clang/clang-format-3.9/clang-format.py<cr>
 
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j

@@ -1,7 +1,8 @@
 # -*- shell-script -*-
 #
-# Named directories.
-p=/Users/brossettestanislas/profiles/devel
+
+# Named directories
+p=/home/stanislas/profiles/devel
 pb=$p/build; pi=$p/install; ps=$p/src
 
 # Add prefix to PATH

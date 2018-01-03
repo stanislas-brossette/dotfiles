@@ -35,3 +35,5 @@ test -x /usr/lib/ccache/g++ && export CXX=/usr/lib/ccache/g++
 export KEYCHAIN_KEYS="$HOME/.ssh/id_rsa"
 
 export PROFILE="devel"
+
+source ~/.zprofile
