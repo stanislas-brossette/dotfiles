@@ -5,13 +5,34 @@
 p=/home/stanislas/profiles/devel
 pb=$p/build; pi=$p/install; ps=$p/src
 
+w=/home/stanislas/profiles/wdc_workspace
+wb=$w/build; wi=$w/install/GCC; ws=$w/src
+
 # Add prefix to PATH
 export PATH="$pi/bin:$PATH"
 export PATH="$pi/sbin:$PATH"
+export PATH="$wi/bin":$PATH
+export PATH="/home/stanislas/.local/bin":$PATH
+
+# Add prefix to LD_LIBRARY_PATH
+export LD_LIBRARY_PATH="$pi/lib":$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH="$wi/lib":$LD_LIBRARY_PATH
+
+# PYTHONPATH
+export PYTHONPATH="$wi/lib/python2.7/dist-packages":$PYTHONPATH
+export PYTHONPATH="$wi/lib/python2.7/site-packages":$PYTHONPATH
 
 # Eigen
 export EIGEN3_ROOT_DIR="$pi/include/eigen3"
 export EIGEN3_ROOT="$pi/include/eigen3"
+
+# Gazebo
+export SIMULATION_WORKSPACE_PATH=$HOME/.simulation
+export GAZEBO_MODEL_PATH=$SIMULATION_WORKSPACE_PATH:$SIMULATION_WORKSPACE_PATH/wdc_v3_robot:$GAZEBO_MODEL_PATH
+export GAZEBO_PLUGIN_PATH=$HOME/profiles/wdc_workspace/build/wanderbrain/simulation/world:$HOME/profiles/wdc_workspace/build/wanderbrain/simulation:$GAZEBO_PLUGIN_PATH
+
+# DirectCollocation
+export MATLAB_DIRECT_COLLOCATION_PATH=$ws/stanislas_directCollocation_Exo
 
 # Add tmuxifier to PATH
 #export PATH="$HOME/.tmuxifier/bin:$PATH"
@@ -36,6 +57,9 @@ export CPATH="$pi/include:$CPATH"
 # pkg-config
 export PKG_CONFIG_PATH="$pi/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PKG_CONFIG_PATH="$pi/share/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="$wi/lib/pkgconfig":$PKG_CONFIG_PATH
+
+
 #export PKG_CONFIG_PATH="$pi/lib/x86_64-linux-gnu/pkgconfig:$PKG_CONFIG_PATH"
 
 
@@ -53,6 +77,10 @@ export PKG_CONFIG_PATH="$pi/share/pkgconfig:$PKG_CONFIG_PATH"
 
 # Ros
 #source /opt/ros/indigo/setup.zsh
+#source $ws/wandersimu/ros_packages/devel/setup.zsh
+#export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:"$ws/wdc_v3_robot"
+#export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:"$ws/wandersimu/ros_packages/src"
+
 #source $ps/multi_contact/ros_workspace/devel/setup.zsh
 #source $ps/ros/hydro/setup.zsh
 
