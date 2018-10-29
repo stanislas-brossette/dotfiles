@@ -15,7 +15,7 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'thinca/vim-qfreplace'
 
 " A completion framework for neovim
-Plug 'roxma/nvim-completion-manager'
+"Plug 'roxma/nvim-completion-manager'
 
 "A code-completion engine for Vim http://valloric.github.io/YouCompleteMe/
 "Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
@@ -50,6 +50,9 @@ Plug 'rizzatti/dash.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
 Plug 'bfredl/nvim-miniyank'
+
+" VIM Table Mode for instant table creation.
+Plug 'dhruvasagar/vim-table-mode'
 
 call plug#end()
 endif

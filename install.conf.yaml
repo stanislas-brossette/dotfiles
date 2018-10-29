@@ -56,9 +56,9 @@
     # ~/.i3: gui/i3/
 
     # term
-    #~/.tmux.conf: term/tmux.conf
-    #~/.tmux: term/tmux/
-    #~/.tmuxifierLayouts: term/tmuxifierLayouts/
+    ~/.tmux.conf: term/tmux/tmux.conf
+    ~/.tmux: term/tmux/
+    ~/.tmuxifierLayouts: term/tmux/tmuxifierLayouts/
 
     # zsh
     ~/.zshrc: term/zsh/zshrc

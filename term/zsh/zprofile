@@ -34,6 +34,15 @@ export GAZEBO_PLUGIN_PATH=$HOME/profiles/wdc_workspace/build/wanderbrain/simulat
 # DirectCollocation
 export MATLAB_DIRECT_COLLOCATION_PATH=$ws/stanislas_directCollocation_Exo
 
+# WDC robot path
+#export WDC_MESH_ROOT_PATH="/home/stanislas/.simulation"
+export WDC_MESH_ROOT_PATH="$ws/wdc_v3_robot"
+export WDC_ROBOT_PATH="$ws/wdc_v3_robot"
+export WDC_V3_ROBOT_PATH="$ws/wdc_v3_robot"
+
+# WDC workspace path
+export WDC_WORKSPACE_PATH="$ws"
+
 # Add tmuxifier to PATH
 #export PATH="$HOME/.tmuxifier/bin:$PATH"
 
