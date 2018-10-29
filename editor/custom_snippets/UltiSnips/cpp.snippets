@@ -1,8 +1,31 @@
 extends cpp
 
 snippet fors
-	for (size_t ${1:i} = 0; $1 < ${2:count}; $1${3:++})
-	{
-		${4}
-	}
+for (size_t ${1:i} = 0; $1 < ${2:count}; $1${3:++})
+{
+	${4}
+}
+endsnippet
+
+snippet for
+for (${1:type} ${2:i} = 0; $2 < ${3:count}; $2${4:++})
+{
+	${5}
+}
+endsnippet
+
+snippet coutv
+std::cout << "${1:value}: " << $1 << std::endl;
+endsnippet
+
+snippet inc
+#include <${1:iostream}>
+endsnippet
+
+snippet getc
+const ${1:type}& ${2:name}() const {return $2_;};
+endsnippet
+
+snippet get
+${1:type}& ${2:name}() {return $2_;};
 endsnippet
