@@ -3,13 +3,6 @@
 #######################################################################
 
 - aliases:
-    # Install vim plugins
-    - &vim_plugins
-      command: vim -Nu ~/.vimrc.plugins +PlugInstall
-      stdin: true
-      stdout: true
-      stderr: true
-
     # Install neovim plugins
     - &nvim_plugins
       command: nvim -u ~/.config/nvim/plugins.vim +PlugInstall

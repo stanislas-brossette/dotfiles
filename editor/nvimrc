@@ -42,9 +42,9 @@ set termencoding=utf-8
 set encoding=utf-8
 
 " configure tabwidth and insert spaces instead of tabs
-set tabstop=2        " tab width is 2 spaces
-set shiftwidth=2     " indent also with 2 spaces
-" set expandtab        " expand tabs to spaces
+set tabstop=4        " tab width is 2 spaces
+set shiftwidth=4     " indent also with 2 spaces
+set expandtab        " expand tabs to spaces
 
 " this turns off physical line wrapping (ie: automatic insertion of newlines)
 set textwidth=0 wrapmargin=0
@@ -168,9 +168,9 @@ noremap <F8> :set number! relativenumber! number?<CR>
 " Display trailing characters
 nnoremap <F9> :set list!<CR>
 
-" Map Ctrl+k to clang-format in normal mode
-map <C-K> :pyf /usr/share/clang/clang-format-3.9/clang-format.py<cr>
-imap <C-K> <c-o>:pyf /usr/share/clang/clang-format-3.9/clang-format.py<cr>
+"" Map Ctrl+k to clang-format in normal mode
+"map <C-K> :pyf /usr/share/clang/clang-format-3.9/clang-format.py<cr>
+"imap <C-K> <c-o>:pyf /usr/share/clang/clang-format-3.9/clang-format.py<cr>
 
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j

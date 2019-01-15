@@ -36,9 +36,7 @@ alias srcindigo='source /opt/ros/indigo/setup.zsh'
 alias reload='source ~/.zshenv; source ~/.zshrc'
 alias valgr='valgrind --tool=memcheck --track-origins=yes --show-reachable=yes --leak-check=yes --error-limit=no'
 alias cleanTmp="find -name '*~' -exec echo mv \{\} /tmp \;"
-alias matlab15="~/Matlab2015Install/bin/matlab"
-alias matlab16="~/Matlab2016Install/bin/matlab"
-alias matlab17="~/Matlab2017Install/bin/matlab"
+alias matlab="/usr/local/MATLAB/R2016b/bin/matlab"
 
 # qpdfview synctex vim synchronization
 # for qpdfview
@@ -55,7 +53,7 @@ alias e='emacsclient -t'
 alias ec='emacsclient -c'
 
 DISABLE_AUTO_UPDATE="true"
-plugins=(git github debian screen dev-profile keychain hrp2 ros cmake-build-dir autojump command-not-found nyan web-search)
+plugins=(git github debian screen dev-profile keychain hrp2 ros cmake-build-dir autojump command-not-found web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -72,6 +70,12 @@ setopt autocd
 
 if [ -f /etc/zsh_command_not_found ]; then
     . /etc/zsh_command_not_found
+fi
+
+# Start OmniNames server if needed.
+export OMNINAMES_DATADIR="${HOME}/wdc_workspace/install/GCC/var/omninames/"
+if ! pgrep "omniNames" > /dev/null 2>&1 ; then
+    omniNames -errlog /var/tmp/omninames.log &
 fi
 
 # bing ctrl+L to clear screen

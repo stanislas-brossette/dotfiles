@@ -19,7 +19,7 @@ export FULLNAME='Stanislas Brossette'
 export EMAIL='stanislas.brossette@gmail.com'
 export REPLYTO=$EMAIL
 
-export AIST_USERNAME='s00402'
+#export AIST_USERNAME='s00402'
 export SONAR_USERNAME='sbrossette'
 
 export MAIL=$HOME/Mail
