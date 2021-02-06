@@ -38,11 +38,19 @@ alias valgr='valgrind --tool=memcheck --track-origins=yes --show-reachable=yes -
 alias cleanTmp="find -name '*~' -exec echo mv \{\} /tmp \;"
 alias matlab="/usr/local/MATLAB/R2016b/bin/matlab"
 
+# Wandercraft
+alias gtpb='cd ~/wdc_workspace/build/pc/wandercode && switchToPC'
+alias gtsb='cd ~/wdc_workspace/build/simu/wandercode && switchToSimu'
+alias gteb='cd ~/wdc_workspace/build/exo/wandercode && switchToExo'
+alias gtws='cd ~/wdc_workspace/src/wandercode'
+
 # qpdfview synctex vim synchronization
 # for qpdfview
 #vim --servername LATEX --remote-silent +%2<Enter> %1
 alias vimtex='vim --servername LATEX'
 alias nvimtex="NVIM_LISTEN_ADDRESS=/tmp/nvim_tex.sock nvim"
+
+alias meteo='curl "wttr.in/Paris?format=v2"'
 
 # set terminal to 256 colors
 TERM=xterm-256color
@@ -53,7 +61,7 @@ alias e='emacsclient -t'
 alias ec='emacsclient -c'
 
 DISABLE_AUTO_UPDATE="true"
-plugins=(git github debian screen dev-profile keychain hrp2 ros cmake-build-dir autojump command-not-found web-search)
+plugins=(git github debian screen keychain command-not-found web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -73,10 +81,10 @@ if [ -f /etc/zsh_command_not_found ]; then
 fi
 
 # Start OmniNames server if needed.
-export OMNINAMES_DATADIR="${HOME}/wdc_workspace/install/GCC/var/omninames/"
-if ! pgrep "omniNames" > /dev/null 2>&1 ; then
-    omniNames -errlog /var/tmp/omninames.log &
-fi
+#export OMNINAMES_DATADIR="${HOME}/wdc_workspace/install/GCC/var/omninames/"
+#if ! pgrep "omniNames" > /dev/null 2>&1 ; then
+#    omniNames -errlog /var/tmp/omninames.log &
+#fi
 
 # bing ctrl+L to clear screen
 # bindkey -s '^l' clear; echo -e "\033c\e[3J"
@@ -93,3 +101,6 @@ fi
 #export TMUXIFIER_TMUX_OPTS="-2"
 #eval "$(tmuxifier init -)"
 
+source $HOME/wdc_workspace/src/wandercode/tools/setup/wdc.env
+
+#export WDC_DOCKER_ADDITIONAL_CMD="$WDC_DOCKER_ADDITIONAL_CMD -p 127.0.0.1:8000:8000"

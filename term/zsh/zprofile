@@ -2,22 +2,22 @@
 #
 
 # Named directories
-#p=/home/stanislas/profiles/devel
+#p=/home/dynwalk/profiles/devel
 #pb=$p/build; pi=$p/install; ps=$p/src
 
-w=/home/stanislas/wdc_workspace
+w=/home/stan/wdc_workspace
 wb=$w/build/GCC; wi=$w/install/GCC; ws=$w/src
 
 # Add prefix to PATH
 #export PATH="$pi/bin:$PATH"
 #export PATH="$pi/sbin:$PATH"
-export PATH="$wi/bin":$PATH
-export PATH="/home/stanislas/.local/bin":$PATH
-export PATH="/opt/openrobots/bin":$PATH
+#export PATH="$wi/bin":$PATH
+#export PATH="/home/dynwalk/.local/bin":$PATH
+#export PATH="/opt/openrobots/bin":$PATH
 
 # Add prefix to LD_LIBRARY_PATH
 #export LD_LIBRARY_PATH="$pi/lib":$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH="$wi/lib":$LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH="$wi/lib":$LD_LIBRARY_PATH
 
 # PYTHONPATH
 # export PYTHONPATH="$wi/lib/python2.7/dist-packages":$PYTHONPATH
@@ -27,21 +27,21 @@ export LD_LIBRARY_PATH="$wi/lib":$LD_LIBRARY_PATH
 #export EIGEN3_ROOT="$pi/include/eigen3"
 
 # Gazebo
-export SIMULATION_WORKSPACE_PATH=$HOME/.simulation
-export GAZEBO_MODEL_PATH=$SIMULATION_WORKSPACE_PATH:$SIMULATION_WORKSPACE_PATH/wdc_v3_robot:$GAZEBO_MODEL_PATH
-export GAZEBO_PLUGIN_PATH=$HOME/profiles/wdc_workspace/build/wanderbrain/simulation/world:$HOME/profiles/wdc_workspace/build/wanderbrain/simulation:$GAZEBO_PLUGIN_PATH
+#export SIMULATION_WORKSPACE_PATH=$HOME/.simulation
+#export GAZEBO_MODEL_PATH=$SIMULATION_WORKSPACE_PATH:$SIMULATION_WORKSPACE_PATH/wdc_v3_robot:$GAZEBO_MODEL_PATH
+#export GAZEBO_PLUGIN_PATH=$HOME/profiles/wdc_workspace/build/wanderbrain/simulation/world:$HOME/profiles/wdc_workspace/build/wanderbrain/simulation:$GAZEBO_PLUGIN_PATH
 
 # DirectCollocation
 export MATLAB_DIRECT_COLLOCATION_PATH=$ws/directCollocation_Exo
 
 # WDC robot path
-#export WDC_MESH_ROOT_PATH="/home/stanislas/.simulation"
+#export WDC_MESH_ROOT_PATH="/home/dynwalk/.simulation"
 export WDC_MESH_ROOT_PATH="$ws/wdc_v3_robot"
 export WDC_ROBOT_PATH="$ws/wdc_v3_robot"
 export WDC_V3_ROBOT_PATH="$ws/wdc_v3_robot"
 
 # WDC workspace path
-export WDC_WORKSPACE_PATH="$ws"
+#export WDC_WORKSPACE_PATH="$ws"
 
 # Add tmuxifier to PATH
 #export PATH="$HOME/.tmuxifier/bin:$PATH"
@@ -66,7 +66,7 @@ export WDC_WORKSPACE_PATH="$ws"
 # pkg-config
 #export PKG_CONFIG_PATH="$pi/lib/pkgconfig:$PKG_CONFIG_PATH"
 #export PKG_CONFIG_PATH="$pi/share/pkgconfig:$PKG_CONFIG_PATH"
-export PKG_CONFIG_PATH="$wi/lib/pkgconfig":$PKG_CONFIG_PATH
+#export PKG_CONFIG_PATH="$wi/lib/pkgconfig":$PKG_CONFIG_PATH
 
 
 #export PKG_CONFIG_PATH="$pi/lib/x86_64-linux-gnu/pkgconfig:$PKG_CONFIG_PATH"
@@ -103,7 +103,7 @@ export PKG_CONFIG_PATH="$wi/lib/pkgconfig":$PKG_CONFIG_PATH
 #  export $(gnome-keyring-daemon -s)
 #fi
 
-#alias vrep=/home/stanislas/profiles/default-x86_64-linux-ubuntu-13.04/src/VREP/V-REP_PRO_EDU_V3_3_1_64_Linux/vrep.sh 
-#alias VREP=/home/stanislas/profiles/default-x86_64-linux-ubuntu-13.04/src/VREP/
-#export VREP_PATH="/home/stanislas/profiles/default-x86_64-linux-ubuntu-13.04/src/VREP/V-REP_PRO_EDU_V3_3_1_64_Linux/"
+#alias vrep=/home/dynwalk/profiles/default-x86_64-linux-ubuntu-13.04/src/VREP/V-REP_PRO_EDU_V3_3_1_64_Linux/vrep.sh 
+#alias VREP=/home/dynwalk/profiles/default-x86_64-linux-ubuntu-13.04/src/VREP/
+#export VREP_PATH="/home/dynwalk/profiles/default-x86_64-linux-ubuntu-13.04/src/VREP/V-REP_PRO_EDU_V3_3_1_64_Linux/"
 

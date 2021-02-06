@@ -3,7 +3,6 @@
 #######################################################################
 
 - aliases:
-    # Install neovim plugins
     - &nvim_plugins
       command: nvim -u ~/.config/nvim/plugins.vim +PlugInstall
       stdin: true
@@ -56,9 +55,9 @@
     # zsh
     ~/.zshrc: term/zsh/zshrc
     #~/.zshrc.local: term/zsh/zshrc.local
-    ~/.zshenv: term/zsh/zshenv
+    #~/.zshenv: term/zsh/zshenv
     #~/.zshenv.local: term/zsh/zshenv.local
-    ~/.zprofile: term/zsh/zprofile
+    #~/.zprofile: term/zsh/zprofile
     #~/.zprofile.local: term/zsh/zprofile.local
 
 - shell:

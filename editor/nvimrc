@@ -188,3 +188,6 @@ nnoremap <A-l> <C-w>l
 "map <right> :echoerr "Use hjkl instead of arrows!!!"<CR>
 
 tnoremap <Esc><Esc> <C-\><C-n>
+
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+

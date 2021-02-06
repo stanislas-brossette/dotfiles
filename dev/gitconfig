@@ -4,6 +4,7 @@
 	quotepath = false
 # http://stackoverflow.com/questions/136178/git-diff-handling-long-lines
   pager = less -r
+	editor = nvim
 # if ↑ doesn’t work, try: pager = less -+$LESS -FRX
 [color]
 	ui = auto
@@ -11,30 +12,36 @@
 [repack]
 	usedeltabaseoffset = true # >git 1.5
 [alias]
-	s = status
+	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+	ac = !git add $1 && git commit
+	acm = !sh git add $1 && git commit -m $2
 	a = !git add . && git status
 	au = !git add -u . && git status
 	aa = !git add . && git add -u . && git status
+	br = branch
+	co = checkout
 	c = commit
+	ci = commit
 	cm = commit -m
 	ca = commit --amend # careful
-	ac = !git add $1 && git commit
-	acm = !sh git add $1 && git commit -m $2
-	l = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
-	ll = log --stat --abbrev-commit
 	d = diff --color-words
 	dh = diff --color-words head
+	l = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+	ll = log --stat --abbrev-commit
+	lg = log --graph --decorate --oneline --all
 	master = checkout master
-	spull = svn rebase
-	spush = svn dcommit
-	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
-	co = checkout
 	pom = push origin master
 	pod = push origin dev
 	po = push origin
+	ps = push stanislas
+	pu = push upstream
+	s = status
+	st = status
+	spull = svn rebase
+	spush = svn dcommit
 [user]
 	name = stanislas-brossette
-	email = stanislas.brossette@gmail.com
+	email = stanislas.brossette@wandercraft.eu
 [github]
 	user = stanislas-brossette
 [diff]
